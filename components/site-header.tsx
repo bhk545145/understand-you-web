@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Container from "@/components/container";
+import type { SiteShell } from "@/types/site";
 
 const navLinks = [
   { href: "/features", label: "功能" },
@@ -9,7 +10,7 @@ const navLinks = [
   { href: "/faq", label: "FAQ" },
 ];
 
-export default function SiteHeader() {
+export default function SiteHeader({ site }: { site: SiteShell }) {
   return (
     <header className="sticky top-0 z-40 border-b border-[color:var(--line)] bg-[rgba(251,245,237,0.82)] backdrop-blur-xl">
       <Container className="flex flex-wrap items-center justify-between gap-4 py-4">
@@ -18,8 +19,8 @@ export default function SiteHeader() {
             懂
           </span>
           <span>
-            <strong className="block text-lg font-semibold">懂你</strong>
-            <span className="text-xs text-[color:var(--muted)]">Understand You</span>
+            <strong className="block text-lg font-semibold">{site.name}</strong>
+            <span className="text-xs text-[color:var(--muted)]">{site.shortName}</span>
           </span>
         </Link>
 
@@ -31,8 +32,8 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <Link className="button-secondary" href="/download">
-          获取应用
+        <Link className="button-secondary" href={site.primaryCta.href}>
+          {site.primaryCta.label}
         </Link>
       </Container>
     </header>

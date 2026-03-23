@@ -14,6 +14,16 @@ export type SiteConfig = {
   platforms: string[];
 };
 
+export type SiteShell = {
+  name: string;
+  shortName: string;
+  description: string;
+  primaryCta: {
+    label: string;
+    href: string;
+  };
+};
+
 export type HomepageMetric = {
   label: string;
   value: string;

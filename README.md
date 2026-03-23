@@ -4,7 +4,7 @@ Official website for 懂你 (Understand You).
 
 ## Stack
 
-- Next.js 14 App Router
+- Next.js 15 App Router
 - Tailwind CSS
 - Strapi-ready content layer with local fallback data
 
@@ -64,5 +64,27 @@ Collection types:
 
 ## Notes
 
-- The data layer in [`lib/strapi.ts`](./lib/strapi.ts) is written to tolerate both flattened Strapi responses and legacy `attributes` nesting.
+- The data layer in [`lib/strapi.ts`](./lib/strapi.ts) is written to tolerate both flattened Strapi responses and legacy `attributes` nesting, and now uses Strapi 5 compatible `populate=*` queries for component-rich content.
 - Download links are intentionally configurable through the CMS, so version and channel changes do not require frontend code edits.
+- Shared shell content such as the global metadata, brand copy, and primary CTA now reads from `site-config`.
+
+## End-to-end CMS verification
+
+After starting both local services:
+
+```bash
+# terminal 1
+cd ../understand-you-cms
+npm run develop
+
+# terminal 2
+cd ../understand-you-web
+cp .env.example .env.local
+npm run dev
+
+# terminal 3
+cd ../understand-you-web
+npm run verify:cms
+```
+
+The verification script checks both the Strapi endpoints and the rendered website pages to confirm the expected CMS content is showing up in the frontend.

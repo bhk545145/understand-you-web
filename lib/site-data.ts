@@ -7,6 +7,7 @@ import type {
   HomepageData,
   PrivacyPageData,
   SiteConfig,
+  SiteShell,
 } from "@/types/site";
 
 const siteConfigFallback: SiteConfig = {
@@ -295,12 +296,12 @@ function mergeWithFallback<T extends object>(fallback: T, remote: Partial<T> | n
 }
 
 export async function getSiteConfig(): Promise<SiteConfig> {
-  const remote = await fetchStrapiSingle<Partial<SiteConfig>>("site-config", "populate=deep");
+  const remote = await fetchStrapiSingle<Partial<SiteConfig>>("site-config", "populate=*");
   return mergeWithFallback(siteConfigFallback, remote);
 }
 
 export async function getHomepageData(): Promise<HomepageData> {
-  const remote = await fetchStrapiSingle<Partial<HomepageData>>("homepage", "populate=deep");
+  const remote = await fetchStrapiSingle<Partial<HomepageData>>("homepage", "populate=*");
 
   return {
     ...homepageFallback,
@@ -316,7 +317,7 @@ export async function getHomepageData(): Promise<HomepageData> {
 export async function getFeatureItems(): Promise<FeatureItem[]> {
   const remote = await fetchStrapiCollection<Partial<FeatureItem>>(
     "features",
-    "sort[0]=sort:asc&pagination[pageSize]=12&populate=deep",
+    "sort[0]=sort:asc&pagination[pageSize]=12&populate=*",
   );
 
   if (!remote?.length) {
@@ -333,7 +334,7 @@ export async function getFeatureItems(): Promise<FeatureItem[]> {
 }
 
 export async function getAboutPageData(): Promise<AboutPageData> {
-  const remote = await fetchStrapiSingle<Partial<AboutPageData>>("about-page", "populate=deep");
+  const remote = await fetchStrapiSingle<Partial<AboutPageData>>("about-page", "populate=*");
 
   return {
     ...aboutFallback,
@@ -347,7 +348,7 @@ export async function getAboutPageData(): Promise<AboutPageData> {
 export async function getDownloadPageData(): Promise<DownloadPageData> {
   const remote = await fetchStrapiSingle<Partial<DownloadPageData>>(
     "download-page",
-    "populate=deep",
+    "populate=*",
   );
 
   return {
@@ -376,12 +377,23 @@ export async function getFaqItems(): Promise<FaqItem[]> {
 export async function getPrivacyPageData(): Promise<PrivacyPageData> {
   const remote = await fetchStrapiSingle<Partial<PrivacyPageData>>(
     "privacy-page",
-    "populate=deep",
+    "populate=*",
   );
 
   return {
     ...privacyFallback,
     ...remote,
     sections: remote?.sections?.length ? remote.sections : privacyFallback.sections,
+  };
+}
+
+export async function getSiteShell(): Promise<SiteShell> {
+  const siteConfig = await getSiteConfig();
+
+  return {
+    name: siteConfig.name,
+    shortName: siteConfig.shortName,
+    description: siteConfig.description,
+    primaryCta: siteConfig.primaryCta,
   };
 }
