@@ -18,7 +18,7 @@ export default async function HomePage() {
     <main className="overflow-hidden">
       <section className="section-shell">
         <Container className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="space-y-6">
+          <div className="space-y-7">
             <span className="eyebrow">{siteConfig.tagline}</span>
 
             <h1 className="display-title text-balance">
@@ -30,6 +30,12 @@ export default async function HomePage() {
             </h1>
 
             <p className="body-copy max-w-2xl">{homepage.heroSubtitle}</p>
+
+            <div className="hero-pill-row">
+              <span className="hero-pill">对话式入口</span>
+              <span className="hero-pill">本地优先</span>
+              <span className="hero-pill">iOS / Android / macOS</span>
+            </div>
 
             <div className="flex flex-wrap gap-4">
               <Link className="button-primary" href={siteConfig.primaryCta.href}>
@@ -53,23 +59,30 @@ export default async function HomePage() {
           </div>
 
           <div className="relative">
-            <div className="absolute -right-4 top-8 hidden h-40 w-40 rounded-full bg-[radial-gradient(circle,rgba(247,198,166,0.65),transparent_68%)] lg:block" />
+            <div className="hero-ambient hero-ambient-left" />
+            <div className="hero-ambient hero-ambient-right" />
 
-            <div className="panel soft-grid glow-panel p-6 sm:p-8">
-              <div className="rounded-[24px] bg-[rgba(255,255,255,0.74)] p-6 shadow-[0_20px_60px_rgba(80,54,32,0.08)]">
-                <div className="space-y-4">
-                  <div className="ml-auto max-w-[78%] rounded-[22px] bg-[rgba(201,112,73,0.16)] px-4 py-3 text-sm leading-7">
-                    晚饭 68 元，顺手记一下。还有明天上午提醒我和客户开会。
-                  </div>
-                  <div className="max-w-[88%] rounded-[22px] bg-white px-4 py-3 text-sm leading-7 text-[color:var(--muted)] shadow-[0_16px_30px_rgba(70,48,31,0.08)]">
-                    已帮你记录一笔餐饮支出，并新增一条明早会议提醒。预算与待办会同步更新。
-                  </div>
+            <div className="hero-visual-shell">
+              <div className="hero-visual-card">
+                <div className="hero-chat-bubble hero-chat-bubble-user">
+                  今天午餐 48 元，顺手记一下，晚上提醒我整理本周预算。
+                </div>
+                <div className="hero-chat-bubble hero-chat-bubble-ai">
+                  已记录餐饮支出，并创建今晚预算回顾提醒。你的本周餐饮预算还有 63% 可用。
                 </div>
               </div>
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="hero-visual-art">
+                <img
+                  alt={homepage.heroVisualAlt}
+                  className="h-auto w-full"
+                  src={homepage.heroVisualUrl}
+                />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
                 {homepage.heroCards.map((card) => (
-                  <article className="rounded-[24px] bg-[rgba(255,255,255,0.65)] p-5" key={card.title}>
+                  <article className="hero-note-card" key={card.title}>
                     <h2 className="text-xl">{card.title}</h2>
                     <p className="mt-3 text-sm leading-7 text-[color:var(--muted)]">
                       {card.body}
@@ -86,8 +99,8 @@ export default async function HomePage() {
         <Container>
           <SectionHeading
             eyebrow="Value"
-            title="让记录这件事，不再像填表"
-            description="官网的第一性表达不是“功能很多”，而是让用户立刻感受到这是一种更自然的使用方式。"
+            title="让记录不再像填表，而像被理解"
+            description="这一版首页更强调产品气质本身：它不是冷冰冰的管理台，而是一个能把日常生活接住的入口。"
           />
 
           <div className="grid gap-6 md:grid-cols-3">
@@ -124,8 +137,8 @@ export default async function HomePage() {
         <Container>
           <SectionHeading
             eyebrow="Features"
-            title="把高频生活场景收进一个统一系统"
-            description="首页先呈现四个最能建立认知的能力模块，完整列表放在功能页继续展开。"
+            title="把高频生活场景收进一个统一而有温度的系统"
+            description="从财务记录到提醒、心情和时间线，懂你试图让每一个高频动作都更自然地发生。"
           />
 
           <div className="grid gap-6 lg:grid-cols-2">
@@ -141,7 +154,7 @@ export default async function HomePage() {
           <SectionHeading
             eyebrow="Platforms"
             title="现在，懂你已支持多端体验"
-            description="无论你是在手机上随手记一笔，还是在桌面上集中整理生活，都能保持一致的产品语言。"
+            description="无论你是在手机上随手记一笔，还是在桌面上集中整理生活，都能保持一致的视觉语言与交互节奏。"
           />
 
           <div className="grid gap-5 md:grid-cols-3">

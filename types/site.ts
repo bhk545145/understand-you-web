@@ -58,6 +58,8 @@ export type HomepageFinalCta = {
 export type HomepageData = {
   heroTitle: string;
   heroSubtitle: string;
+  heroVisualUrl: string;
+  heroVisualAlt: string;
   heroCards: HomepageHeroCard[];
   metrics: HomepageMetric[];
   values: HomepageValue[];

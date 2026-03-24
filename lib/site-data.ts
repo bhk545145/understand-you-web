@@ -28,17 +28,20 @@ const siteConfigFallback: SiteConfig = {
 };
 
 const homepageFallback: HomepageData = {
-  heroTitle: "把生活记录\n变成一场自然对话",
+  heroTitle: "让生活、财务与情绪\n都被温柔地接住",
   heroSubtitle:
-    "懂你是一款以 AI 对话为入口的个人生活记录助手。记账、待办、随笔、预算、日历与账户管理，被收拢到一个更自然的入口里。",
+    "懂你是一款以 AI 对话为入口的个人生活记录助手。记账、待办、随笔、预算、日历与账户管理，被收拢到一个更轻盈、更统一、更有陪伴感的入口里。",
+  heroVisualUrl: "/illustrations/hero-orbit.svg",
+  heroVisualAlt:
+    "懂你官网首页主图，展示手机对话界面、生活时间线与财务卡片的抽象组合插画。",
   heroCards: [
     {
-      title: "一句话就能开始",
-      body: "无论是记一笔支出、加一个待办，还是写下一段心情，你都不需要在多个页面里来回切换。",
+      title: "一句话收拢零碎生活",
+      body: "无论是记一笔支出、加一个待办，还是留下一段心情，你都可以直接开口，不必在多个页面间切换。",
     },
     {
-      title: "本地优先，更安心",
-      body: "核心数据优先保存在设备本地，离线也能继续使用主要能力，在隐私与稳定之间保持平衡。",
+      title: "更像陪伴，而不是工具栏",
+      body: "我们希望它既有 AI 的理解力，也有生活产品该有的温度与稳定性，让记录本身变得轻一点。",
     },
   ],
   metrics: [
@@ -58,13 +61,13 @@ const homepageFallback: HomepageData = {
   values: [
     {
       eyebrow: "Natural",
-      title: "像聊天一样记录",
+      title: "像聊天一样整理人生碎片",
       description:
         "不用先想清楚功能入口，也不用打开一堆表单。像平常说话一样表达，系统来理解和归档。",
     },
     {
       eyebrow: "Unified",
-      title: "把分散的小事收回来",
+      title: "把分散的小事收回到同一条时间线",
       description:
         "记账、待办、随笔、预算与日历不再割裂。你面前只有一个入口，但背后是一整套生活系统。",
     },
@@ -83,9 +86,9 @@ const homepageFallback: HomepageData = {
       "真正好的工具，不该要求你适应系统，而该先理解你的表达。",
   },
   finalCta: {
-    title: "开始把生活还给更自然的表达",
+    title: "开始把生活整理成一条更有呼吸感的轨迹",
     body:
-      "这版官网已经具备多页面结构、统一视觉系统和 Strapi 接口占位，后续可以直接接入 CMS 做内容运营。",
+      "现在这套官网已经能承接品牌表达、功能介绍和多端下载，后续也可以继续通过 Strapi 后台调整内容与节奏。",
     primaryLabel: "查看下载",
     primaryHref: "/download",
     secondaryLabel: "了解产品故事",
