@@ -11,7 +11,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export async function generateMetadata(): Promise<Metadata> {
   const site = await getSiteShell();
-  const defaultTitle = `${site.name} | 把生活记录变成一场自然对话`;
+  const defaultTitle = `${site.name} | ${site.tagline}`;
 
   return {
     metadataBase: new URL(siteUrl),

@@ -13,9 +13,9 @@ import type {
 const siteConfigFallback: SiteConfig = {
   name: "懂你",
   shortName: "Understand You",
-  tagline: "AI 生活记录助手",
+  tagline: "AI 对话生活助手",
   description:
-    "把记账、待办、随笔、预算、日历与账户管理放进一场更自然的对话。",
+    "把记账、待办、随笔、预算、日历与账户管理收进一个更自然、更有温度的入口。",
   primaryCta: {
     label: "查看下载",
     href: "/download",
@@ -88,10 +88,10 @@ const homepageFallback: HomepageData = {
   finalCta: {
     title: "开始把生活整理成一条更有呼吸感的轨迹",
     body:
-      "现在这套官网已经能承接品牌表达、功能介绍和多端下载，后续也可以继续通过 Strapi 后台调整内容与节奏。",
-    primaryLabel: "查看下载",
+      "从随手记下一笔支出，到回看一整段生活轨迹，懂你希望把复杂的管理动作重新变回一场自然的对话。",
+    primaryLabel: "下载应用",
     primaryHref: "/download",
-    secondaryLabel: "了解产品故事",
+    secondaryLabel: "探索功能",
     secondaryHref: "/about",
   },
 };
@@ -196,34 +196,34 @@ const aboutFallback: AboutPageData = {
 };
 
 const downloadFallback: DownloadPageData = {
-  title: "选择适合你的使用场景",
+  title: "选择你的设备，开始更自然地记录生活",
   intro:
-    "官网的下载页不仅承接跳转，也会成为版本说明与平台状态的统一出口。现在已经预留了 iOS、Android 和 macOS 三个入口位。",
+    "无论你习惯在手机上随手记录，还是在桌面上集中整理，懂你都尽量保持一致的使用节奏与体验温度。",
   options: [
     {
       platform: "iOS",
       audience: "适合随手记录、即时查询与移动场景中的高频使用。",
-      detail: "后续可直接接入 App Store 或 TestFlight 链接，由 Strapi 后台统一配置。",
+      detail: "适合在移动场景里快速记账、补待办、查看今天的生活节奏。",
       href: null,
       status: "已支持平台",
     },
     {
       platform: "Android",
       audience: "适合希望快速下载安装包、在主力移动设备上长期使用的用户。",
-      detail: "可配置为官网 APK 下载、应用商店链接或灰度包分发地址。",
+      detail: "适合把高频记录放在主力设备上，随时打开、即时补记。",
       href: null,
       status: "已支持平台",
     },
     {
       platform: "macOS",
       audience: "适合在桌面环境里集中整理财务、任务与生活记录的用户。",
-      detail: "可配置为官网安装包、TestFlight for Mac 或其他内部发布渠道。",
+      detail: "适合在桌面端回看时间线、整理财务和把零散记录慢慢串起来。",
       href: null,
       status: "已支持平台",
     },
   ],
   note:
-    "推荐把下载链接、版本号和平台说明放进 Strapi 的 single type 里统一维护。这样发布新版本时，你只需要在后台改内容，不需要重复改官网代码。",
+    "下载渠道与平台状态会随着版本节奏持续更新，这里会保持为统一入口。",
 };
 
 const faqFallback: FaqItem[] = [
@@ -396,6 +396,7 @@ export async function getSiteShell(): Promise<SiteShell> {
   return {
     name: siteConfig.name,
     shortName: siteConfig.shortName,
+    tagline: siteConfig.tagline,
     description: siteConfig.description,
     primaryCta: siteConfig.primaryCta,
   };

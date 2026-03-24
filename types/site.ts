@@ -17,6 +17,7 @@ export type SiteConfig = {
 export type SiteShell = {
   name: string;
   shortName: string;
+  tagline: string;
   description: string;
   primaryCta: {
     label: string;
