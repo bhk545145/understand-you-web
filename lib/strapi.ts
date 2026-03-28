@@ -19,27 +19,57 @@ function buildUrl(pathname: string, query?: string) {
   return `${base}/api/${normalizedPath}${queryString}`;
 }
 
-function normalizeEntity<T>(entity: StrapiEntity<T> | null | undefined): T | null {
-  if (!entity) {
-    return null;
-  }
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
 
-  if ("attributes" in entity && entity.attributes) {
-    return entity.attributes;
-  }
-
-  const flattenedEntity = entity as Record<string, unknown>;
+function stripEntityMeta(record: Record<string, unknown>) {
   const {
-    id: _id,
-    documentId: _documentId,
     createdAt: _createdAt,
     updatedAt: _updatedAt,
     publishedAt: _publishedAt,
     locale: _locale,
-    ...attributes
-  } = flattenedEntity;
+    localizations: _localizations,
+    ...rest
+  } = record;
 
-  return attributes as T;
+  return rest;
+}
+
+function normalizeValue(value: unknown): unknown {
+  if (Array.isArray(value)) {
+    return value.map((item) => normalizeValue(item));
+  }
+
+  if (!isRecord(value)) {
+    return value;
+  }
+
+  if ("data" in value) {
+    return normalizeValue(value.data);
+  }
+
+  if ("attributes" in value && isRecord(value.attributes)) {
+    const normalizedEntity = normalizeValue({
+      ...value.attributes,
+      id: value.id,
+      documentId: value.documentId,
+    });
+
+    return isRecord(normalizedEntity) ? stripEntityMeta(normalizedEntity) : normalizedEntity;
+  }
+
+  const normalizedEntries = Object.entries(value).map(([key, item]) => [
+    key,
+    normalizeValue(item),
+  ]);
+
+  return stripEntityMeta(Object.fromEntries(normalizedEntries));
+}
+
+function normalizeEntity<T>(entity: StrapiEntity<T> | null | undefined): T | null {
+  const normalized = normalizeValue(entity);
+  return (normalized as T | null) ?? null;
 }
 
 async function fetchStrapi<T>(pathname: string, query?: string): Promise<T | null> {
@@ -74,6 +104,22 @@ async function fetchStrapi<T>(pathname: string, query?: string): Promise<T | nul
     console.warn(`[strapi] failed to reach ${url}`, error);
     return null;
   }
+}
+
+export function resolveStrapiMediaUrl(url?: string | null) {
+  if (!url) {
+    return null;
+  }
+
+  if (/^https?:\/\//.test(url)) {
+    return url;
+  }
+
+  if (!STRAPI_URL) {
+    return url;
+  }
+
+  return `${STRAPI_URL.replace(/\/$/, "")}${url.startsWith("/") ? url : `/${url}`}`;
 }
 
 export async function fetchStrapiSingle<T>(

@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
 
 import Container from "@/components/container";
+import RichTextContent from "@/components/rich-text-content";
 import SectionHeading from "@/components/section-heading";
 import { getFaqItems } from "@/lib/site-data";
 
 export const metadata: Metadata = {
-  title: "常见问题",
-  description: "查看懂你的常见问题，了解产品定位、平台支持与数据处理方式。",
+  title: {
+    absolute: "FAQ | 懂你",
+  },
+  description: "查看懂你的常见问题，快速了解产品定位、平台支持与内容维护方式。",
 };
 
 export default async function FaqPage() {
@@ -18,8 +21,8 @@ export default async function FaqPage() {
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="FAQ"
-            title="把你最关心的问题先回答清楚"
-            description="官方站点的 FAQ 会优先由 Strapi 管理，后续你只需要在后台改内容，不需要重新写页面结构。"
+            title="把最常被问到的问题先回答清楚"
+            description="这里的内容默认也可以通过 Strapi 维护，方便后续持续补充。"
             align="center"
             level="h1"
           />
@@ -30,7 +33,9 @@ export default async function FaqPage() {
                 <summary className="cursor-pointer list-none pr-8 text-xl font-semibold leading-8">
                   {item.question}
                 </summary>
-                <p className="body-copy mt-4">{item.answer}</p>
+                <div className="mt-4">
+                  <RichTextContent content={item.answer} />
+                </div>
               </details>
             ))}
           </div>

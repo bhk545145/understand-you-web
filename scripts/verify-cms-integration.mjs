@@ -1,4 +1,6 @@
-const siteUrl = (process.env.SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:3000").replace(/\/$/, "");
+const siteUrl = (
+  process.env.SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "http://127.0.0.1:3000"
+).replace(/\/$/, "");
 const strapiUrl = (process.env.STRAPI_URL ?? "http://127.0.0.1:1337").replace(/\/$/, "");
 
 function flattenEntity(entity) {
@@ -6,21 +8,38 @@ function flattenEntity(entity) {
     return null;
   }
 
+  if (Array.isArray(entity)) {
+    return entity.map((item) => flattenEntity(item));
+  }
+
+  if (typeof entity !== "object") {
+    return entity;
+  }
+
+  if (entity.data !== undefined) {
+    return flattenEntity(entity.data);
+  }
+
   if (entity.attributes) {
-    return entity.attributes;
+    return flattenEntity({
+      ...entity.attributes,
+      id: entity.id,
+      documentId: entity.documentId,
+    });
   }
 
   const {
-    id: _id,
-    documentId: _documentId,
     createdAt: _createdAt,
     updatedAt: _updatedAt,
     publishedAt: _publishedAt,
     locale: _locale,
-    ...attributes
+    localizations: _localizations,
+    ...rest
   } = entity;
 
-  return attributes;
+  return Object.fromEntries(
+    Object.entries(rest).map(([key, value]) => [key, flattenEntity(value)]),
+  );
 }
 
 async function fetchJson(url) {
@@ -44,55 +63,105 @@ async function fetchText(url) {
 }
 
 function assertContains(content, expected, label) {
-  if (!content.includes(expected)) {
+  if (!expected || !content.includes(expected)) {
     throw new Error(`Expected ${label} to include: ${expected}`);
   }
 }
 
 async function main() {
-  const siteConfigResponse = await fetchJson(`${strapiUrl}/api/site-config?populate=*`);
-  const homepageResponse = await fetchJson(`${strapiUrl}/api/homepage?populate=*`);
-  const featuresResponse = await fetchJson(
-    `${strapiUrl}/api/features?sort[0]=sort:asc&pagination[pageSize]=12&populate=*`,
-  );
-  const downloadResponse = await fetchJson(`${strapiUrl}/api/download-page?populate=*`);
-  const faqResponse = await fetchJson(
-    `${strapiUrl}/api/faqs?sort[0]=sort:asc&pagination[pageSize]=20`,
-  );
+  const [
+    siteConfigResponse,
+    homepageResponse,
+    featureScenesResponse,
+    featuresPageResponse,
+    featureDetailsResponse,
+    platformLinksResponse,
+    downloadPageResponse,
+    releaseNotesResponse,
+    faqResponse,
+  ] = await Promise.all([
+    fetchJson(`${strapiUrl}/api/site-config?populate=*`),
+    fetchJson(`${strapiUrl}/api/homepage?populate=*`),
+    fetchJson(
+      `${strapiUrl}/api/feature-scenes?filters[isActive][$eq]=true&sort[0]=sort:asc&pagination[pageSize]=6&populate=*`,
+    ),
+    fetchJson(`${strapiUrl}/api/features-page?populate=*`),
+    fetchJson(
+      `${strapiUrl}/api/feature-details?filters[isActive][$eq]=true&sort[0]=sort:asc&pagination[pageSize]=12&populate=*`,
+    ),
+    fetchJson(
+      `${strapiUrl}/api/platform-links?filters[isActive][$eq]=true&sort[0]=sort:asc&pagination[pageSize]=6&populate=*`,
+    ),
+    fetchJson(`${strapiUrl}/api/download-page?populate=*`),
+    fetchJson(
+      `${strapiUrl}/api/release-notes?sort[0]=isLatest:desc&sort[1]=releaseDate:desc&pagination[pageSize]=12`,
+    ),
+    fetchJson(
+      `${strapiUrl}/api/faqs?filters[isActive][$eq]=true&sort[0]=sort:asc&pagination[pageSize]=20`,
+    ),
+  ]);
 
   const siteConfig = flattenEntity(siteConfigResponse.data);
   const homepage = flattenEntity(homepageResponse.data);
-  const firstFeature = flattenEntity(featuresResponse.data?.[0]);
-  const downloadPage = flattenEntity(downloadResponse.data);
+  const firstScene = flattenEntity(featureScenesResponse.data?.[0]);
+  const featuresPage = flattenEntity(featuresPageResponse.data);
+  const firstFeatureDetail = flattenEntity(featureDetailsResponse.data?.[0]);
+  const firstPlatform = flattenEntity(platformLinksResponse.data?.[0]);
+  const downloadPage = flattenEntity(downloadPageResponse.data);
+  const latestRelease = flattenEntity(releaseNotesResponse.data?.[0]);
   const firstFaq = flattenEntity(faqResponse.data?.[0]);
 
-  if (!siteConfig || !homepage || !firstFeature || !downloadPage || !firstFaq) {
+  if (
+    !siteConfig ||
+    !homepage ||
+    !firstScene ||
+    !featuresPage ||
+    !firstFeatureDetail ||
+    !firstPlatform ||
+    !downloadPage ||
+    !latestRelease ||
+    !firstFaq
+  ) {
     throw new Error("CMS returned incomplete content for verification.");
   }
 
-  const [homeHtml, featuresHtml, downloadHtml, faqHtml] = await Promise.all([
-    fetchText(`${siteUrl}/`),
-    fetchText(`${siteUrl}/features`),
-    fetchText(`${siteUrl}/download`),
-    fetchText(`${siteUrl}/faq`),
-  ]);
+  const [homeHtml, featuresHtml, downloadHtml, faqHtml, privacyHtml, aboutHtml] =
+    await Promise.all([
+      fetchText(`${siteUrl}/`),
+      fetchText(`${siteUrl}/features`),
+      fetchText(`${siteUrl}/download`),
+      fetchText(`${siteUrl}/faq`),
+      fetchText(`${siteUrl}/privacy`),
+      fetchText(`${siteUrl}/about`),
+    ]);
 
-  assertContains(homeHtml, siteConfig.tagline, "home page");
-  assertContains(homeHtml, homepage.story?.title ?? "", "home page story");
-  assertContains(featuresHtml, firstFeature.title, "features page");
-  assertContains(downloadHtml, downloadPage.options?.[0]?.platform ?? "", "download page");
+  assertContains(homeHtml, siteConfig.siteTagline, "home page");
+  assertContains(homeHtml, firstScene.title, "home page scenes");
+  assertContains(featuresHtml, featuresPage.title, "features page");
+  assertContains(featuresHtml, firstFeatureDetail.title, "features page blocks");
+  assertContains(downloadHtml, downloadPage.title, "download page");
+  assertContains(downloadHtml, firstPlatform.platformName, "download page platform cards");
+  assertContains(downloadHtml, latestRelease.version, "download page release note");
   assertContains(faqHtml, firstFaq.question, "faq page");
+  assertContains(privacyHtml, "隐私政策", "privacy page");
+  assertContains(aboutHtml, homepage.storyTitle, "about page");
 
   console.log("Verified CMS endpoints:");
   console.log(`- ${strapiUrl}/api/site-config`);
   console.log(`- ${strapiUrl}/api/homepage`);
-  console.log(`- ${strapiUrl}/api/features`);
+  console.log(`- ${strapiUrl}/api/feature-scenes`);
+  console.log(`- ${strapiUrl}/api/platform-links`);
+  console.log(`- ${strapiUrl}/api/features-page`);
+  console.log(`- ${strapiUrl}/api/feature-details`);
   console.log(`- ${strapiUrl}/api/download-page`);
+  console.log(`- ${strapiUrl}/api/release-notes`);
   console.log(`- ${strapiUrl}/api/faqs`);
   console.log("Verified website pages:");
   console.log(`- ${siteUrl}/`);
   console.log(`- ${siteUrl}/features`);
+  console.log(`- ${siteUrl}/about`);
   console.log(`- ${siteUrl}/download`);
+  console.log(`- ${siteUrl}/privacy`);
   console.log(`- ${siteUrl}/faq`);
   console.log("CMS integration verification passed.");
 }

@@ -1,127 +1,167 @@
+export type RichTextNode = {
+  type?: string;
+  level?: number;
+  text?: string;
+  format?: string;
+  url?: string;
+  children?: RichTextNode[];
+  [key: string]: unknown;
+};
+
+export type RichTextValue = string | RichTextNode[] | null;
+
+export type MediaAsset = {
+  id?: number;
+  documentId?: string;
+  url: string;
+  alternativeText?: string | null;
+  name?: string | null;
+  mime?: string | null;
+  width?: number | null;
+  height?: number | null;
+};
+
+export type SocialLink = {
+  label: string;
+  url: string;
+};
+
+export type PlatformName = "iOS" | "Android" | "macOS";
+
 export type SiteConfig = {
-  name: string;
-  shortName: string;
-  tagline: string;
-  description: string;
-  primaryCta: {
-    label: string;
-    href: string;
-  };
-  secondaryCta: {
-    label: string;
-    href: string;
-  };
-  platforms: string[];
+  siteName: string;
+  siteTagline: string;
+  siteDescription: string;
+  logo: MediaAsset | null;
+  favicon: MediaAsset | null;
+  defaultSeoTitle: string;
+  defaultSeoDescription: string;
+  footerCopyright: string;
+  socialLinks: SocialLink[];
+  primaryDownloadText: string;
+  primaryDownloadLink: string;
 };
 
 export type SiteShell = {
-  name: string;
-  shortName: string;
-  tagline: string;
-  description: string;
-  primaryCta: {
-    label: string;
-    href: string;
-  };
+  siteName: string;
+  siteTagline: string;
+  siteDescription: string;
+  footerCopyright: string;
+  socialLinks: SocialLink[];
+  primaryDownloadText: string;
+  primaryDownloadLink: string;
 };
 
-export type HomepageMetric = {
-  label: string;
-  value: string;
-};
-
-export type HomepageValue = {
-  eyebrow: string;
+export type CapabilityItem = {
   title: string;
   description: string;
-};
-
-export type HomepageHeroCard = {
-  title: string;
-  body: string;
-};
-
-export type HomepageStory = {
-  title: string;
-  body: string;
-  quote: string;
-};
-
-export type HomepageFinalCta = {
-  title: string;
-  body: string;
-  primaryLabel: string;
-  primaryHref: string;
-  secondaryLabel: string;
-  secondaryHref: string;
+  iconName: string;
 };
 
 export type HomepageData = {
   heroTitle: string;
   heroSubtitle: string;
-  heroVisualUrl: string;
-  heroVisualAlt: string;
-  heroCards: HomepageHeroCard[];
-  metrics: HomepageMetric[];
-  values: HomepageValue[];
-  story: HomepageStory;
-  finalCta: HomepageFinalCta;
+  heroDescription: string;
+  heroPrimaryButtonText: string;
+  heroPrimaryButtonLink: string;
+  heroSecondaryButtonText: string;
+  heroSecondaryButtonLink: string;
+  heroPlatformsText: string;
+  heroMockupImage: MediaAsset | null;
+  heroBackgroundImage: MediaAsset | null;
+  whyTitle: string;
+  whyContent: RichTextValue;
+  capabilitiesTitle: string;
+  capabilitiesItems: CapabilityItem[];
+  storyTitle: string;
+  storyContent: RichTextValue;
+  ctaTitle: string;
+  ctaDescription: string;
+  ctaPrimaryButtonText: string;
+  ctaPrimaryButtonLink: string;
+  seoTitle: string;
+  seoDescription: string;
+  seoImage: MediaAsset | null;
 };
 
-export type FeatureItem = {
+export type FeatureScene = {
+  title: string;
+  subtitle: string;
+  exampleText: string;
+  description: string;
+  image: MediaAsset | null;
+  sort: number;
+  isActive: boolean;
+};
+
+export type PlatformLink = {
+  platformName: PlatformName;
+  title: string;
+  description: string;
+  downloadUrl: string | null;
+  buttonText: string;
+  icon: MediaAsset | null;
+  sort: number;
+  isActive: boolean;
+};
+
+export type FeaturesPageData = {
+  title: string;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+};
+
+export type FeatureDetailItem = {
+  title: string;
+  subtitle: string;
+  description: RichTextValue;
+  image: MediaAsset | null;
+  sort: number;
   slug: string;
-  title: string;
-  summary: string;
-  detail: string;
-  highlight: string;
-};
-
-export type JourneyItem = {
-  year: string;
-  title: string;
-  body: string;
-};
-
-export type PrincipleItem = {
-  title: string;
-  body: string;
+  isActive: boolean;
 };
 
 export type AboutPageData = {
   title: string;
-  intro: string;
-  story: string[];
-  journey: JourneyItem[];
-  principles: PrincipleItem[];
-};
-
-export type DownloadOption = {
-  platform: string;
-  audience: string;
-  detail: string;
-  href: string | null;
-  status: string;
+  intro: RichTextValue;
+  beliefTitle: string;
+  beliefContent: RichTextValue;
+  visionTitle: string;
+  visionContent: RichTextValue;
+  seoTitle: string;
+  seoDescription: string;
 };
 
 export type DownloadPageData = {
   title: string;
-  intro: string;
-  options: DownloadOption[];
-  note: string;
+  description: string;
+  versionTitle: string;
+  versionDescription: string;
+  seoTitle: string;
+  seoDescription: string;
+};
+
+export type ReleaseNote = {
+  version: string;
+  platforms: PlatformName[];
+  releaseDate: string;
+  summary: string;
+  content: RichTextValue;
+  isLatest: boolean;
 };
 
 export type FaqItem = {
   question: string;
-  answer: string;
-};
-
-export type PrivacySection = {
-  title: string;
-  body: string[];
+  answer: RichTextValue;
+  sort?: number;
+  isActive?: boolean;
 };
 
 export type PrivacyPageData = {
   title: string;
-  intro: string;
-  sections: PrivacySection[];
+  updatedAtText: string;
+  content: RichTextValue;
+  seoTitle: string;
+  seoDescription: string;
 };
