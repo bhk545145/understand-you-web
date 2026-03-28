@@ -39,14 +39,15 @@ export default function CtaSection({
   return (
     <section className="section-shell pt-0">
       <Container>
-        <div className="panel cta-panel grid gap-8 px-8 py-10 md:px-12 md:py-12">
+        <div className="panel cta-panel grid gap-8 px-8 py-10 md:grid-cols-[1fr_auto] md:items-end md:px-12 md:py-12">
           <div className="space-y-4">
-            <p className="eyebrow">Download</p>
+            <p className="eyebrow cta-eyebrow">Download</p>
             <h2 className="section-title text-balance">{homepage.ctaTitle}</h2>
             <p className="body-copy max-w-2xl">{homepage.ctaDescription}</p>
+            <p className="cta-meta">iOS · Android · macOS</p>
           </div>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 md:justify-end">
             {platforms.map((platform) => (
               <CtaAction
                 href={platform.downloadUrl}

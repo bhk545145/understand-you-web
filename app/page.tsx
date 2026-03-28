@@ -28,7 +28,7 @@ export default async function HomePage() {
   ]);
 
   return (
-    <main className="overflow-hidden">
+    <main className="home-shell overflow-hidden">
       <HeroSection homepage={homepage} />
       <WhySection homepage={homepage} />
       <ScenesSection scenes={scenes} />

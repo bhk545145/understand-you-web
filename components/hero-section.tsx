@@ -9,30 +9,41 @@ export default function HeroSection({ homepage }: { homepage: HomepageData }) {
   const heroBackgroundUrl = resolveStrapiMediaUrl(homepage.heroBackgroundImage?.url);
 
   return (
-    <section className="section-shell pb-10 pt-12 md:pb-20 md:pt-20">
-      <Container className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div className="space-y-7">
+    <section className="hero-shell section-shell pb-12 pt-10 md:pb-24 md:pt-16">
+      <Container className="relative grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="hero-copy-stack">
           <span className="eyebrow">Personal Life Assistant</span>
-          <h1 className="display-title text-balance">{homepage.heroTitle}</h1>
-          <div className="space-y-4">
-            <p className="text-2xl leading-tight text-[color:var(--ink)] md:text-4xl">
-              {homepage.heroSubtitle}
-            </p>
-            <p className="body-copy max-w-2xl">{homepage.heroDescription}</p>
+
+          <div className="hero-copy-frame">
+            <p className="hero-kicker">从一句自然表达开始</p>
+            <h1 className="display-title text-balance">{homepage.heroTitle}</h1>
+            <div className="space-y-4">
+              <p className="hero-subtitle text-balance">{homepage.heroSubtitle}</p>
+              <p className="body-copy max-w-2xl">{homepage.heroDescription}</p>
+            </div>
+
+            <div className="flex flex-wrap gap-4">
+              <Link className="button-primary" href={homepage.heroPrimaryButtonLink}>
+                {homepage.heroPrimaryButtonText}
+              </Link>
+              <Link className="button-secondary" href={homepage.heroSecondaryButtonLink}>
+                {homepage.heroSecondaryButtonText}
+              </Link>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-4">
-            <Link className="button-primary" href={homepage.heroPrimaryButtonLink}>
-              {homepage.heroPrimaryButtonText}
-            </Link>
-            <Link className="button-secondary" href={homepage.heroSecondaryButtonLink}>
-              {homepage.heroSecondaryButtonText}
-            </Link>
+          <div className="hero-proof-grid">
+            <div className="hero-proof-card">
+              <span className="hero-proof-label">一句话输入</span>
+              <strong>记账、待办、随笔在同一个入口里开始</strong>
+            </div>
+            <div className="hero-proof-card">
+              <span className="hero-proof-label">同一条时间线</span>
+              <strong>把支出、任务与感受重新放回连续生活里</strong>
+            </div>
           </div>
 
-          <p className="text-sm tracking-[0.08em] text-[color:var(--muted)]">
-            {homepage.heroPlatformsText}
-          </p>
+          <p className="hero-platforms-note">{homepage.heroPlatformsText}</p>
         </div>
 
         <div className="relative">
@@ -40,6 +51,11 @@ export default function HeroSection({ homepage }: { homepage: HomepageData }) {
           <div className="hero-ambient hero-ambient-right" />
 
           <div className="hero-stage">
+            <div className="hero-stage-caption">
+              <span>Today</span>
+              <p>把今天的生活，收拢到同一块画布里。</p>
+            </div>
+
             {heroBackgroundUrl ? (
               <img
                 alt=""
@@ -48,6 +64,8 @@ export default function HeroSection({ homepage }: { homepage: HomepageData }) {
                 src={heroBackgroundUrl}
               />
             ) : null}
+
+            <div className="hero-stage-orbit" />
 
             <div className="hero-phone-frame">
               <div className="hero-phone-screen">
@@ -96,6 +114,13 @@ export default function HeroSection({ homepage }: { homepage: HomepageData }) {
               <span className="hero-float-label">日历</span>
               <strong>本周生活轨迹</strong>
               <p>支出、任务与感受在同一时间线上回看</p>
+            </div>
+
+            <div className="hero-timeline-strip">
+              <span>支出</span>
+              <span>待办</span>
+              <span>感受</span>
+              <span>回看</span>
             </div>
           </div>
         </div>
