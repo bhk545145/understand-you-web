@@ -4,9 +4,135 @@ import Container from "@/components/container";
 import { resolveStrapiMediaUrl } from "@/lib/strapi";
 import type { HomepageData } from "@/types/site";
 
+const heroMetrics = [
+  { label: "今日支出", value: "¥ 38", note: "自动识别 1 笔" },
+  { label: "待办", value: "02", note: "1 条需要提醒" },
+  { label: "随笔", value: "01", note: "已留下情绪片段" },
+];
+
+const heroTimelineItems = [
+  {
+    tone: "expense",
+    badge: "餐饮",
+    title: "午餐 38 元",
+    meta: "12:24 · 已归类到餐饮",
+    detail: "一句话完成记录，不用再打开表单。",
+  },
+  {
+    tone: "todo",
+    badge: "待办",
+    title: "明天下午给妈妈打电话",
+    meta: "已放进提醒节奏",
+    detail: "保留时间语义，也保留这件事的重要程度。",
+  },
+  {
+    tone: "note",
+    badge: "随笔",
+    title: "今天有点累，但事情终于推进了",
+    meta: "21:10 · 片刻感受",
+    detail: "情绪和进展一起留下，而不只是冷冰冰的备忘。",
+  },
+];
+
+function HeroDevicePreview({
+  heroMockupUrl,
+}: {
+  heroMockupUrl: string | null;
+}) {
+  return (
+    <div className="hero-device-ui">
+      <div className="hero-device-statusbar">
+        <span>9:41</span>
+        <div className="hero-device-status-icons" aria-hidden="true">
+          <span className="hero-device-signal" />
+          <span className="hero-device-wifi" />
+          <span className="hero-device-battery" />
+        </div>
+      </div>
+
+      <div className="hero-device-topbar">
+        <div>
+          <p className="hero-device-greeting">晚上好，今天也被你认真过了一遍。</p>
+          <strong>今天的生活轨迹</strong>
+        </div>
+        <div className="hero-device-avatar">懂</div>
+      </div>
+
+      <div className="hero-device-tabs" aria-label="页面导航">
+        <span className="hero-device-tab hero-device-tab-active">生活</span>
+        <span className="hero-device-tab">财务</span>
+        <span className="hero-device-tab">日历</span>
+      </div>
+
+      <div className="hero-device-composer">
+        <div className="hero-device-composer-copy">
+          <span className="hero-device-composer-label">AI 入口</span>
+          <p>今天中午吃饭花了 38 元，明天下午提醒我给妈妈打电话。</p>
+        </div>
+        <span className="hero-device-composer-action">发送</span>
+      </div>
+
+      {heroMockupUrl ? (
+        <div className="hero-device-shot">
+          <img
+            alt="懂你应用截图"
+            className="hero-device-shot-image"
+            src={heroMockupUrl}
+          />
+          <div className="hero-device-shot-overlay">
+            <span>今日快照</span>
+            <strong>真实界面预览</strong>
+          </div>
+        </div>
+      ) : null}
+
+      <div className="hero-device-metrics">
+        {heroMetrics.map((metric) => (
+          <div className="hero-device-metric" key={metric.label}>
+            <span>{metric.label}</span>
+            <strong>{metric.value}</strong>
+            <small>{metric.note}</small>
+          </div>
+        ))}
+      </div>
+
+      <div className="hero-device-section-head">
+        <span>Today</span>
+        <p>由一句表达，展开成今天的完整记录。</p>
+      </div>
+
+      <div className="hero-device-timeline">
+        {heroTimelineItems.map((item) => (
+          <div
+            className={`hero-device-entry hero-device-entry-${item.tone}`}
+            key={item.title}
+          >
+            <div className="hero-device-entry-dot" aria-hidden="true" />
+            <div className="hero-device-entry-copy">
+              <div className="hero-device-entry-head">
+                <span className="hero-device-entry-badge">{item.badge}</span>
+                <strong>{item.title}</strong>
+              </div>
+              <p className="hero-device-entry-meta">{item.meta}</p>
+              <p className="hero-device-entry-detail">{item.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="hero-device-nav">
+        <span className="hero-device-nav-item hero-device-nav-item-active">入口</span>
+        <span className="hero-device-nav-item">时间线</span>
+        <span className="hero-device-nav-item">预算</span>
+        <span className="hero-device-nav-item">我的</span>
+      </div>
+    </div>
+  );
+}
+
 export default function HeroSection({ homepage }: { homepage: HomepageData }) {
-  const heroMockupUrl = resolveStrapiMediaUrl(homepage.heroMockupImage?.url);
   const heroBackgroundUrl = resolveStrapiMediaUrl(homepage.heroBackgroundImage?.url);
+  const heroMockupUrl = resolveStrapiMediaUrl(homepage.heroMockupImage?.url);
 
   return (
     <section className="hero-shell section-shell pb-12 pt-10 md:pb-24 md:pt-16">
@@ -69,32 +195,7 @@ export default function HeroSection({ homepage }: { homepage: HomepageData }) {
 
             <div className="hero-phone-frame">
               <div className="hero-phone-screen">
-                {heroMockupUrl ? (
-                  <img
-                    alt="懂你应用界面"
-                    className="h-full w-full object-cover"
-                    src={heroMockupUrl}
-                  />
-                ) : (
-                  <div className="space-y-4">
-                    <div className="hero-mini-bubble hero-mini-bubble-user">
-                      今天中午吃饭花了 38 元
-                    </div>
-                    <div className="hero-mini-bubble hero-mini-bubble-ai">
-                      已记录餐饮支出，归档到今天的生活轨迹。
-                    </div>
-                    <div className="grid gap-3">
-                      <div className="hero-mini-panel">
-                        <span className="hero-mini-label">待办</span>
-                        <strong>明天下午给妈妈打电话</strong>
-                      </div>
-                      <div className="hero-mini-panel">
-                        <span className="hero-mini-label">感受</span>
-                        <strong>今天有点累，但事情终于推进了</strong>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <HeroDevicePreview heroMockupUrl={heroMockupUrl} />
               </div>
             </div>
 
