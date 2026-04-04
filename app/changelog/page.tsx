@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 
+// 强制动态渲染
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+
 import Container from "@/components/container";
 import RichTextContent from "@/components/rich-text-content";
 import SectionHeading from "@/components/section-heading";

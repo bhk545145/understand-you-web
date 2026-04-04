@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 
+// 强制动态渲染，确保每次请求都从 CMS 获取最新数据
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import CapabilitiesSection from "@/components/capabilities-section";
 import CtaSection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";

@@ -1,4 +1,9 @@
 import type { Metadata } from "next";
+
+// 强制动态渲染
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import Link from "next/link";
 
 import Container from "@/components/container";
@@ -72,6 +77,22 @@ export default async function DownloadPage() {
                   </Link>
                 </div>
               ) : null}
+
+              <div className="mt-6 rounded-[24px] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-5">
+                <div className="flex flex-wrap items-center justify-between gap-4">
+                  <div className="space-y-2">
+                    <span className="eyebrow">Shortcut</span>
+                    <h2 className="text-2xl">想把快捷记账直接加到系统里？</h2>
+                    <p className="body-copy">
+                      我们已经准备好了快捷记账模板导入页。添加后，你就可以通过 Siri、
+                      桌面图标或自动化快速唤起懂你记账。
+                    </p>
+                  </div>
+                  <Link className="button-secondary" href="/shortcut-bookkeeping">
+                    查看引导页
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
