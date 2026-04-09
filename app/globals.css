@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --background: #f5ede5;
-  --background-strong: #ead9ca;
-  --surface: rgba(255, 251, 246, 0.72);
-  --surface-strong: rgba(255, 250, 245, 0.92);
-  --ink: #1d1714;
-  --muted: #6a6059;
-  --accent: #c96e42;
-  --accent-strong: #9d5134;
-  --accent-soft: #f1cfb2;
-  --forest: #245954;
-  --forest-deep: #183c3b;
-  --line: rgba(68, 46, 33, 0.11);
-  --shadow: 0 30px 90px rgba(78, 53, 34, 0.14);
+  --background: #f8fafc;
+  --background-strong: #f0f4f8;
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --ink: #1a1a2e;
+  --muted: #6b7280;
+  --accent: #1890FF;
+  --accent-strong: #096DD9;
+  --accent-soft: #BAE7FF;
+  --forest: #1890FF;
+  --forest-deep: #096DD9;
+  --line: rgba(24, 144, 255, 0.08);
+  --shadow: 0 30px 90px rgba(24, 144, 255, 0.08);
 }
 
 * {
@@ -25,10 +25,10 @@
 html {
   scroll-behavior: smooth;
   background:
-    radial-gradient(circle at 10% -2%, rgba(255, 214, 182, 0.78), transparent 24%),
-    radial-gradient(circle at 88% 4%, rgba(242, 219, 188, 0.74), transparent 26%),
-    radial-gradient(circle at 80% 34%, rgba(202, 224, 216, 0.2), transparent 28%),
-    linear-gradient(180deg, #fffaf4 0%, #f5ede5 40%, #f1e6da 100%);
+    radial-gradient(circle at 10% -2%, rgba(186, 231, 255, 0.45), transparent 24%),
+    radial-gradient(circle at 88% 4%, rgba(230, 243, 255, 0.42), transparent 26%),
+    radial-gradient(circle at 80% 34%, rgba(186, 231, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 40%, #f0f4f8 100%);
 }
 
 body {
@@ -56,13 +56,13 @@ body::before {
     radial-gradient(circle at 84% 16%, rgba(255, 255, 255, 0.2), transparent 20%),
     repeating-linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.06) 0,
-      rgba(255, 255, 255, 0.06) 1px,
+      rgba(255, 255, 255, 0.04) 0,
+      rgba(255, 255, 255, 0.04) 1px,
       transparent 1px,
       transparent 16px
     );
   content: "";
-  opacity: 0.38;
+  opacity: 0.22;
 }
 
 h1,
@@ -92,7 +92,7 @@ a {
 }
 
 ::selection {
-  background: rgba(201, 110, 66, 0.2);
+  background: rgba(24, 144, 255, 0.2);
 }
 
 @layer base {
@@ -103,7 +103,7 @@ a {
 
 @layer components {
   .panel {
-    @apply rounded-[34px] border backdrop-blur-xl;
+    @apply rounded-2xl border backdrop-blur-xl;
     background: var(--surface);
     border-color: var(--line);
     box-shadow: var(--shadow);
@@ -116,15 +116,15 @@ a {
   .eyebrow {
     @apply inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em];
     color: var(--accent-strong);
-    background: rgba(201, 110, 66, 0.12);
+    background: rgba(24, 144, 255, 0.1);
   }
 
   .display-title {
-    @apply text-6xl leading-none sm:text-7xl lg:text-[7.2rem];
+    @apply text-5xl leading-tight sm:text-6xl lg:text-7xl;
   }
 
   .section-title {
-    @apply text-3xl leading-tight md:text-5xl;
+    @apply text-3xl leading-tight md:text-4xl;
   }
 
   .body-copy {
@@ -135,23 +135,23 @@ a {
   .button-primary {
     @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white transition duration-200;
     background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-    box-shadow: 0 18px 40px rgba(157, 81, 52, 0.28);
+    box-shadow: 0 18px 40px rgba(24, 144, 255, 0.24);
   }
 
   .button-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 22px 52px rgba(157, 81, 52, 0.3);
+    box-shadow: 0 22px 52px rgba(24, 144, 255, 0.28);
   }
 
   .button-secondary {
     @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition duration-200;
-    background: rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.72);
     border: 1px solid var(--line);
   }
 
   .button-secondary:hover {
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.84);
+    background: rgba(255, 255, 255, 0.92);
   }
 
   .glow-panel {
@@ -166,14 +166,14 @@ a {
     height: 180px;
     width: 180px;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(201, 110, 66, 0.18), transparent 70%);
+    background: radial-gradient(circle, rgba(24, 144, 255, 0.14), transparent 70%);
     content: "";
     pointer-events: none;
   }
 
   .brand-mark {
     @apply flex h-11 w-11 items-center justify-center rounded-2xl text-lg font-semibold;
-    background: linear-gradient(180deg, rgba(201, 110, 66, 0.18), rgba(201, 110, 66, 0.08));
+    background: linear-gradient(180deg, rgba(24, 144, 255, 0.14), rgba(24, 144, 255, 0.06));
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
   }
 
@@ -182,10 +182,10 @@ a {
   }
 
   .site-header-shell {
-    @apply flex flex-wrap items-center justify-between gap-4 rounded-[30px] border px-5 py-3.5 md:px-6;
-    background: rgba(255, 249, 243, 0.76);
-    border-color: rgba(117, 83, 62, 0.12);
-    box-shadow: 0 18px 42px rgba(104, 70, 51, 0.1);
+    @apply flex flex-wrap items-center justify-between gap-4 rounded-xl border px-5 py-2.5 md:px-6;
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(24, 144, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(24, 144, 255, 0.06);
     backdrop-filter: blur(26px);
   }
 
@@ -195,8 +195,8 @@ a {
 
   .site-header-nav {
     @apply flex flex-wrap items-center justify-center gap-1 rounded-full border px-2 py-1 text-sm;
-    background: rgba(255, 255, 255, 0.46);
-    border-color: rgba(117, 83, 62, 0.08);
+    background: rgba(255, 255, 255, 0.62);
+    border-color: rgba(24, 144, 255, 0.06);
   }
 
   .site-header-link {
@@ -204,7 +204,7 @@ a {
   }
 
   .site-header-link:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(24, 144, 255, 0.06);
   }
 
   .site-header-action {
@@ -212,11 +212,12 @@ a {
   }
 
   .site-footer-shell {
-    @apply panel grid gap-10 px-8 py-10 md:grid-cols-[1.1fr_0.9fr] md:px-10;
+    @apply panel grid gap-10 px-8 py-10 md:grid-cols-[1fr] md:px-10;
     background:
-      linear-gradient(180deg, rgba(255, 252, 248, 0.9), rgba(255, 247, 241, 0.8)),
-      radial-gradient(circle at top right, rgba(201, 110, 66, 0.16), transparent 28%);
+      rgba(255, 255, 255, 0.9);
   }
+
+  /* ---- Hero Section ---- */
 
   .hero-shell {
     position: relative;
@@ -232,11 +233,36 @@ a {
 
   .hero-kicker {
     @apply text-sm font-semibold uppercase tracking-[0.28em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .hero-subtitle {
     @apply text-2xl leading-tight text-[color:var(--ink)] md:text-4xl;
+  }
+
+  .hero-features {
+    @apply grid gap-4 sm:grid-cols-3;
+  }
+
+  .hero-feature-item {
+    @apply flex items-center gap-3 rounded-xl border px-4 py-3;
+    background: rgba(24, 144, 255, 0.04);
+    border-color: rgba(24, 144, 255, 0.08);
+  }
+
+  .hero-feature-icon {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-lg;
+    background: rgba(24, 144, 255, 0.1);
+    color: var(--accent);
+  }
+
+  .hero-feature-item strong {
+    @apply block text-sm leading-5;
+  }
+
+  .hero-feature-item span {
+    @apply block text-xs leading-4;
+    color: var(--muted);
   }
 
   .hero-proof-grid {
@@ -244,10 +270,10 @@ a {
   }
 
   .hero-proof-card {
-    @apply rounded-[28px] border p-5;
-    background: rgba(255, 251, 246, 0.62);
-    border-color: rgba(120, 85, 64, 0.08);
-    box-shadow: 0 18px 36px rgba(102, 71, 52, 0.08);
+    @apply rounded-xl border p-5;
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(24, 144, 255, 0.06);
+    box-shadow: 0 12px 28px rgba(24, 144, 255, 0.05);
     backdrop-filter: blur(18px);
   }
 
@@ -257,7 +283,7 @@ a {
 
   .hero-proof-label {
     @apply text-[11px] font-semibold uppercase tracking-[0.22em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .hero-platforms-note {
@@ -265,32 +291,32 @@ a {
   }
 
   .hero-stage {
-    @apply panel relative min-h-[680px] overflow-hidden p-8;
+    @apply panel relative min-h-[580px] overflow-hidden p-8;
     background:
-      linear-gradient(180deg, rgba(255, 251, 246, 0.96), rgba(255, 244, 235, 0.88)),
-      radial-gradient(circle at 22% 18%, rgba(241, 207, 178, 0.5), transparent 28%),
-      radial-gradient(circle at 86% 16%, rgba(36, 89, 84, 0.12), transparent 26%);
+      linear-gradient(180deg, rgba(240, 248, 255, 0.96), rgba(230, 243, 255, 0.88)),
+      radial-gradient(circle at 22% 18%, rgba(186, 231, 255, 0.4), transparent 28%),
+      radial-gradient(circle at 86% 16%, rgba(24, 144, 255, 0.08), transparent 26%);
   }
 
   .hero-stage::before {
     position: absolute;
     inset: 18px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.44);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     content: "";
   }
 
   .hero-stage-caption {
-    @apply absolute left-4 top-5 z-20 max-w-[170px] rounded-[24px] border px-4 py-3;
-    background: rgba(255, 255, 255, 0.56);
-    border-color: rgba(117, 83, 62, 0.1);
-    box-shadow: 0 16px 34px rgba(91, 64, 45, 0.08);
+    @apply absolute left-4 top-5 z-20 max-w-[170px] rounded-xl border px-4 py-3;
+    background: rgba(255, 255, 255, 0.62);
+    border-color: rgba(24, 144, 255, 0.06);
+    box-shadow: 0 12px 28px rgba(24, 144, 255, 0.06);
     backdrop-filter: blur(18px);
   }
 
   .hero-stage-caption span {
     @apply text-[11px] font-semibold uppercase tracking-[0.28em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .hero-stage-caption p {
@@ -298,17 +324,8 @@ a {
     color: var(--muted);
   }
 
-  .hero-stage-orbit {
-    position: absolute;
-    inset: 96px 110px;
-    border-radius: 999px;
-    border: 1px dashed rgba(160, 128, 108, 0.2);
-    opacity: 0.8;
-    pointer-events: none;
-  }
-
   .hero-phone-frame {
-    @apply absolute top-[53%] z-10 w-[292px] -translate-x-1/2 -translate-y-1/2 rounded-[46px] border border-white/60 bg-[rgba(31,24,20,0.96)] p-3 shadow-[0_44px_96px_rgba(38,25,19,0.26)];
+    @apply absolute top-[53%] z-10 w-[292px] -translate-x-1/2 -translate-y-1/2 rounded-[40px] border border-white/60 bg-[rgba(20,24,38,0.96)] p-3 shadow-[0_44px_96px_rgba(24,144,255,0.16)];
     left: 54%;
   }
 
@@ -321,12 +338,12 @@ a {
     width: 104px;
     transform: translateX(-50%);
     border-radius: 999px;
-    background: rgba(18, 14, 12, 0.9);
+    background: rgba(18, 18, 38, 0.9);
     content: "";
   }
 
   .hero-phone-screen {
-    @apply min-h-[528px] overflow-hidden rounded-[34px] bg-[linear-gradient(180deg,#fff8f2_0%,#f6ede5_100%)] p-5;
+    @apply min-h-[528px] overflow-hidden rounded-[28px] bg-[linear-gradient(180deg,#f0f8ff_0%,#e6f3ff_100%)] p-5;
   }
 
   .hero-device-ui {
@@ -335,7 +352,7 @@ a {
 
   .hero-device-statusbar {
     @apply flex items-center justify-between text-[11px] font-semibold tracking-[0.18em];
-    color: rgba(29, 23, 20, 0.68);
+    color: rgba(26, 26, 46, 0.6);
   }
 
   .hero-device-status-icons {
@@ -348,7 +365,7 @@ a {
     height: 8px;
     width: 8px;
     border-radius: 999px;
-    background: rgba(29, 23, 20, 0.5);
+    background: rgba(26, 26, 46, 0.4);
   }
 
   .hero-device-battery {
@@ -356,13 +373,13 @@ a {
     height: 8px;
     width: 18px;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(36, 89, 84, 0.94), rgba(36, 89, 84, 0.54));
+    background: linear-gradient(90deg, rgba(24, 144, 255, 0.9), rgba(24, 144, 255, 0.5));
   }
 
   .hero-device-topbar {
-    @apply flex items-start justify-between gap-3 rounded-[24px] border border-white/60 px-4 py-3;
-    background: rgba(255, 255, 255, 0.46);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+    @apply flex items-start justify-between gap-3 rounded-xl border border-white/60 px-4 py-3;
+    background: rgba(255, 255, 255, 0.52);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .hero-device-topbar strong {
@@ -376,13 +393,13 @@ a {
 
   .hero-device-avatar {
     @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-sm font-semibold;
-    background: linear-gradient(180deg, rgba(201, 110, 66, 0.18), rgba(201, 110, 66, 0.08));
+    background: linear-gradient(180deg, rgba(24, 144, 255, 0.16), rgba(24, 144, 255, 0.06));
     color: var(--accent-strong);
   }
 
   .hero-device-tabs {
     @apply flex items-center gap-2 rounded-full border border-white/60 px-2 py-2;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.46);
   }
 
   .hero-device-tab {
@@ -391,14 +408,14 @@ a {
   }
 
   .hero-device-tab-active {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.84);
     color: var(--ink);
-    box-shadow: 0 8px 18px rgba(95, 68, 50, 0.08);
+    box-shadow: 0 6px 14px rgba(24, 144, 255, 0.06);
   }
 
   .hero-device-composer {
-    @apply flex items-center gap-3 rounded-[26px] border border-white/60 px-4 py-4;
-    background: linear-gradient(135deg, rgba(201, 110, 66, 0.12), rgba(255, 255, 255, 0.52));
+    @apply flex items-center gap-3 rounded-xl border border-white/60 px-4 py-4;
+    background: linear-gradient(135deg, rgba(24, 144, 255, 0.08), rgba(255, 255, 255, 0.56));
   }
 
   .hero-device-composer-copy {
@@ -407,24 +424,24 @@ a {
 
   .hero-device-composer-label {
     @apply text-[11px] font-semibold uppercase tracking-[0.24em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .hero-device-composer-copy p {
     @apply mt-2 text-sm leading-6;
-    color: rgba(29, 23, 20, 0.84);
+    color: rgba(26, 26, 46, 0.78);
   }
 
   .hero-device-composer-action {
     @apply inline-flex shrink-0 items-center justify-center rounded-full px-3 py-2 text-xs font-semibold;
-    background: rgba(36, 89, 84, 0.12);
-    color: var(--forest);
+    background: rgba(24, 144, 255, 0.1);
+    color: var(--accent-strong);
   }
 
   .hero-device-shot {
-    @apply relative overflow-hidden rounded-[24px] border border-white/60;
+    @apply relative overflow-hidden rounded-xl border border-white/60;
     height: 96px;
-    background: rgba(255, 255, 255, 0.52);
+    background: rgba(255, 255, 255, 0.56);
   }
 
   .hero-device-shot-image {
@@ -433,7 +450,7 @@ a {
 
   .hero-device-shot-overlay {
     @apply absolute inset-x-0 bottom-0 px-4 py-3;
-    background: linear-gradient(180deg, transparent, rgba(29, 23, 20, 0.66));
+    background: linear-gradient(180deg, transparent, rgba(26, 26, 46, 0.66));
   }
 
   .hero-device-shot-overlay span {
@@ -450,8 +467,8 @@ a {
   }
 
   .hero-device-metric {
-    @apply rounded-[22px] border border-white/60 px-3 py-3;
-    background: rgba(255, 255, 255, 0.5);
+    @apply rounded-xl border border-white/60 px-3 py-3;
+    background: rgba(255, 255, 255, 0.56);
   }
 
   .hero-device-metric span {
@@ -474,7 +491,7 @@ a {
 
   .hero-device-section-head span {
     @apply text-[11px] font-semibold uppercase tracking-[0.24em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .hero-device-section-head p {
@@ -487,9 +504,9 @@ a {
   }
 
   .hero-device-entry {
-    @apply flex gap-3 rounded-[24px] border border-white/60 px-4 py-3;
-    background: rgba(255, 255, 255, 0.62);
-    box-shadow: 0 12px 24px rgba(88, 60, 43, 0.06);
+    @apply flex gap-3 rounded-xl border border-white/60 px-4 py-3;
+    background: rgba(255, 255, 255, 0.66);
+    box-shadow: 0 8px 18px rgba(24, 144, 255, 0.04);
   }
 
   .hero-device-entry-dot {
@@ -501,7 +518,7 @@ a {
   }
 
   .hero-device-entry-todo .hero-device-entry-dot {
-    background: var(--forest);
+    background: #52c41a;
   }
 
   .hero-device-entry-note .hero-device-entry-dot {
@@ -522,8 +539,8 @@ a {
 
   .hero-device-entry-badge {
     @apply shrink-0 rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.22em];
-    background: rgba(36, 89, 84, 0.08);
-    color: var(--forest);
+    background: rgba(24, 144, 255, 0.06);
+    color: var(--accent-strong);
   }
 
   .hero-device-entry-meta {
@@ -533,12 +550,12 @@ a {
 
   .hero-device-entry-detail {
     @apply mt-1 text-[12px] leading-5;
-    color: rgba(29, 23, 20, 0.72);
+    color: rgba(26, 26, 46, 0.68);
   }
 
   .hero-device-nav {
-    @apply mt-auto flex items-center justify-between rounded-[22px] border border-white/60 px-3 py-2;
-    background: rgba(255, 255, 255, 0.5);
+    @apply mt-auto flex items-center justify-between rounded-xl border border-white/60 px-3 py-2;
+    background: rgba(255, 255, 255, 0.56);
   }
 
   .hero-device-nav-item {
@@ -547,17 +564,17 @@ a {
   }
 
   .hero-device-nav-item-active {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.84);
     color: var(--ink);
   }
 
   .hero-mini-bubble {
-    @apply rounded-[24px] px-4 py-3 text-sm leading-7;
+    @apply rounded-xl px-4 py-3 text-sm leading-7;
   }
 
   .hero-mini-bubble-user {
     @apply ml-auto max-w-[82%];
-    background: linear-gradient(135deg, rgba(201, 110, 66, 0.2), rgba(241, 207, 178, 0.24));
+    background: linear-gradient(135deg, rgba(24, 144, 255, 0.14), rgba(186, 231, 255, 0.2));
   }
 
   .hero-mini-bubble-ai {
@@ -567,7 +584,7 @@ a {
   }
 
   .hero-mini-panel {
-    @apply rounded-[22px] border border-white/60 bg-white/75 p-4 shadow-[0_18px_40px_rgba(78,53,36,0.08)];
+    @apply rounded-xl border border-white/60 bg-white/75 p-4 shadow-[0_12px_28px_rgba(24,144,255,0.06)];
   }
 
   .hero-mini-panel strong {
@@ -577,12 +594,12 @@ a {
   .hero-mini-label,
   .hero-float-label {
     @apply text-[11px] font-semibold uppercase tracking-[0.22em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .hero-float-card {
-    @apply absolute z-20 w-[198px] rounded-[30px] border border-white/60 p-4 shadow-[0_24px_50px_rgba(76,51,36,0.12)] backdrop-blur-xl;
-    background: rgba(255, 255, 255, 0.74);
+    @apply absolute z-20 w-[198px] rounded-xl border border-white/60 p-4 shadow-[0_18px_40px_rgba(24,144,255,0.08)] backdrop-blur-xl;
+    background: rgba(255, 255, 255, 0.78);
     animation: hero-drift 12s ease-in-out infinite;
   }
 
@@ -615,10 +632,10 @@ a {
 
   .hero-timeline-strip {
     @apply absolute bottom-6 right-6 z-20 flex flex-wrap gap-2 rounded-full border px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.24em];
-    background: rgba(255, 255, 255, 0.68);
-    border-color: rgba(117, 83, 62, 0.08);
-    box-shadow: 0 12px 28px rgba(86, 58, 41, 0.08);
-    color: var(--forest);
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(24, 144, 255, 0.06);
+    box-shadow: 0 8px 20px rgba(24, 144, 255, 0.06);
+    color: var(--accent);
   }
 
   .hero-ambient {
@@ -631,7 +648,7 @@ a {
     top: 30px;
     height: 220px;
     width: 220px;
-    background: radial-gradient(circle, rgba(241, 207, 178, 0.76), transparent 72%);
+    background: radial-gradient(circle, rgba(186, 231, 255, 0.6), transparent 72%);
   }
 
   .hero-ambient-right {
@@ -639,14 +656,16 @@ a {
     right: -18px;
     height: 260px;
     width: 260px;
-    background: radial-gradient(circle, rgba(36, 90, 88, 0.18), transparent 72%);
+    background: radial-gradient(circle, rgba(24, 144, 255, 0.14), transparent 72%);
   }
+
+  /* ---- Why Section (retained styles for sub-pages) ---- */
 
   .why-panel {
     @apply panel grid gap-10 p-8 md:grid-cols-[0.96fr_1.04fr] md:p-10;
     background:
-      linear-gradient(180deg, rgba(255, 252, 248, 0.9), rgba(255, 246, 239, 0.82)),
-      radial-gradient(circle at right top, rgba(241, 207, 178, 0.24), transparent 24%);
+      linear-gradient(180deg, rgba(240, 248, 255, 0.9), rgba(230, 243, 255, 0.82)),
+      radial-gradient(circle at right top, rgba(186, 231, 255, 0.2), transparent 24%);
   }
 
   .why-body {
@@ -654,8 +673,8 @@ a {
   }
 
   .why-illustration {
-    @apply relative flex flex-col gap-4 rounded-[32px] border border-white/60 p-6;
-    background: rgba(255, 255, 255, 0.58);
+    @apply relative flex flex-col gap-4 rounded-2xl border border-white/60 p-6;
+    background: rgba(255, 255, 255, 0.62);
   }
 
   .why-illustration::before {
@@ -664,7 +683,7 @@ a {
     top: 72px;
     bottom: 90px;
     width: 1px;
-    background: linear-gradient(180deg, rgba(157, 81, 52, 0.16), rgba(36, 89, 84, 0.16));
+    background: linear-gradient(180deg, rgba(24, 144, 255, 0.14), rgba(24, 144, 255, 0.08));
     content: "";
   }
 
@@ -678,7 +697,7 @@ a {
   }
 
   .why-illustration-card {
-    @apply relative ml-6 flex items-center justify-between rounded-[22px] border border-[color:var(--line)] bg-[rgba(255,249,243,0.92)] px-4 py-4 text-sm font-medium;
+    @apply relative ml-6 flex items-center justify-between rounded-xl border border-[color:var(--line)] bg-[rgba(255,255,255,0.92)] px-4 py-4 text-sm font-medium;
   }
 
   .why-illustration-card small {
@@ -687,8 +706,8 @@ a {
   }
 
   .why-illustration-merge {
-    @apply mt-4 rounded-[28px] px-5 py-6;
-    background: linear-gradient(135deg, rgba(201, 110, 66, 0.14), rgba(36, 90, 88, 0.1));
+    @apply mt-4 rounded-2xl px-5 py-6;
+    background: linear-gradient(135deg, rgba(24, 144, 255, 0.1), rgba(24, 144, 255, 0.04));
   }
 
   .why-illustration-merge strong {
@@ -700,13 +719,13 @@ a {
     color: var(--muted);
   }
 
+  /* ---- Scene Section ---- */
+
   .scene-card {
-    @apply relative grid gap-8 overflow-hidden rounded-[40px] border p-8 md:grid-cols-[0.86fr_1.14fr] md:items-center md:p-10;
-    background:
-      linear-gradient(180deg, rgba(255, 252, 247, 0.9), rgba(255, 246, 239, 0.82)),
-      radial-gradient(circle at top right, rgba(241, 207, 178, 0.2), transparent 22%);
-    border-color: rgba(117, 83, 62, 0.11);
-    box-shadow: var(--shadow);
+    @apply relative overflow-hidden rounded-2xl border p-6;
+    background: rgba(255, 255, 255, 0.88);
+    border-color: rgba(24, 144, 255, 0.06);
+    box-shadow: 0 12px 36px rgba(24, 144, 255, 0.06);
   }
 
   .scene-card::before {
@@ -716,36 +735,39 @@ a {
     height: 220px;
     width: 220px;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(241, 207, 178, 0.26), transparent 70%);
+    background: radial-gradient(circle, rgba(186, 231, 255, 0.2), transparent 70%);
     content: "";
     pointer-events: none;
   }
 
-  .scene-card:nth-child(even) .scene-card-copy {
-    @apply md:order-2 md:pl-4;
-  }
-
-  .scene-card:nth-child(even) .scene-card-stage {
-    @apply md:order-1;
+  .scene-card-image {
+    @apply w-full rounded-xl border border-white/60 object-cover;
+    height: 200px;
+    background:
+      linear-gradient(180deg, rgba(240, 248, 255, 0.95), rgba(230, 243, 255, 0.84));
   }
 
   .scene-card-copy {
-    @apply relative z-10 max-w-2xl pl-8 md:pl-12;
+    @apply relative z-10;
   }
 
   .scene-index {
-    @apply absolute left-0 top-[-18px] text-6xl leading-none text-[color:var(--accent-soft)] md:text-7xl;
+    @apply text-5xl leading-none text-[color:var(--accent-soft)] md:text-6xl;
     font-family:
       "Iowan Old Style",
       "Palatino Linotype",
       "Book Antiqua",
       "Songti SC",
       serif;
-    opacity: 0.9;
+    opacity: 0.8;
+  }
+
+  .scene-card-title {
+    @apply mt-3 text-base font-semibold leading-7 text-[color:var(--ink)] md:text-lg;
   }
 
   .scene-card-subtitle {
-    @apply mt-5 text-base leading-7 text-[color:var(--ink)] md:text-lg;
+    @apply mt-2 text-sm leading-7 text-[color:var(--muted)] md:text-base;
   }
 
   .scene-card-stage {
@@ -753,11 +775,11 @@ a {
   }
 
   .scene-stage-shell {
-    @apply rounded-[34px] border border-white/60 p-6;
+    @apply rounded-xl border border-white/60 p-6;
     background:
-      linear-gradient(180deg, rgba(255, 249, 243, 0.95), rgba(255, 244, 234, 0.86)),
-      radial-gradient(circle at top right, rgba(36, 89, 84, 0.08), transparent 26%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+      linear-gradient(180deg, rgba(240, 248, 255, 0.95), rgba(230, 243, 255, 0.84)),
+      radial-gradient(circle at top right, rgba(24, 144, 255, 0.06), transparent 26%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
 
   .scene-stage-topline {
@@ -766,12 +788,12 @@ a {
   }
 
   .scene-chat-bubble {
-    @apply rounded-[24px] px-5 py-4 text-sm leading-7;
+    @apply rounded-xl px-5 py-4 text-sm leading-7;
   }
 
   .scene-chat-bubble-user {
     @apply ml-auto mt-5 max-w-[82%];
-    background: linear-gradient(135deg, rgba(201, 110, 66, 0.18), rgba(241, 207, 178, 0.24));
+    background: linear-gradient(135deg, rgba(24, 144, 255, 0.12), rgba(186, 231, 255, 0.18));
   }
 
   .scene-chip-row {
@@ -780,21 +802,21 @@ a {
 
   .scene-chip {
     @apply rounded-full border px-3 py-2 text-xs font-semibold;
-    background: rgba(255, 255, 255, 0.68);
-    border-color: rgba(117, 83, 62, 0.08);
-    color: var(--forest);
+    background: rgba(255, 255, 255, 0.72);
+    border-color: rgba(24, 144, 255, 0.06);
+    color: var(--accent-strong);
   }
 
   .scene-result-card {
-    @apply mt-5 rounded-[28px] border border-white/60 p-5;
-    background: rgba(255, 255, 255, 0.78);
-    box-shadow: 0 18px 36px rgba(88, 60, 43, 0.08);
+    @apply mt-5 rounded-xl border border-white/60 p-5;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 12px 28px rgba(24, 144, 255, 0.05);
     backdrop-filter: blur(18px);
   }
 
   .scene-result-label {
     @apply text-[11px] font-semibold uppercase tracking-[0.24em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .scene-result-card strong {
@@ -811,47 +833,51 @@ a {
     color: var(--muted);
   }
 
+  /* ---- Capabilities Section (retained for sub-pages) ---- */
+
   .capabilities-shell {
-    @apply rounded-[40px] border p-8 md:p-10;
+    @apply rounded-2xl border p-8 md:p-10;
     background:
-      linear-gradient(180deg, rgba(27, 60, 59, 0.94), rgba(20, 39, 38, 0.92)),
-      radial-gradient(circle at top right, rgba(241, 207, 178, 0.1), transparent 24%);
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 30px 90px rgba(33, 39, 39, 0.24);
+      linear-gradient(180deg, rgba(9, 109, 217, 0.94), rgba(24, 144, 255, 0.92)),
+      radial-gradient(circle at top right, rgba(186, 231, 255, 0.1), transparent 24%);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 90px rgba(24, 144, 255, 0.18);
   }
 
   .capabilities-shell .section-title,
   .capabilities-shell .body-copy {
-    color: rgba(248, 243, 239, 0.92);
+    color: rgba(240, 248, 255, 0.94);
   }
 
   .capabilities-shell .eyebrow {
-    background: rgba(241, 207, 178, 0.12);
-    color: rgba(241, 207, 178, 0.94);
+    background: rgba(186, 231, 255, 0.14);
+    color: rgba(186, 231, 255, 0.96);
   }
 
   .capability-card {
-    @apply rounded-[30px] border p-7;
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.08);
+    @apply rounded-2xl border p-7;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(14px);
   }
 
   .capability-icon {
     @apply flex h-14 w-14 items-center justify-center rounded-2xl text-xl;
-    background: linear-gradient(180deg, rgba(241, 207, 178, 0.16), rgba(255, 255, 255, 0.06));
-    color: rgba(241, 207, 178, 0.94);
+    background: linear-gradient(180deg, rgba(186, 231, 255, 0.16), rgba(255, 255, 255, 0.06));
+    color: rgba(186, 231, 255, 0.96);
   }
 
   .capability-card h2,
   .capability-card .body-copy {
-    color: rgba(248, 243, 239, 0.92);
+    color: rgba(240, 248, 255, 0.94);
   }
 
   .capability-index {
     @apply text-sm font-semibold tracking-[0.24em];
-    color: rgba(241, 207, 178, 0.72);
+    color: rgba(186, 231, 255, 0.72);
   }
+
+  /* ---- Platforms Section (retained for sub-pages) ---- */
 
   .platform-card {
     @apply panel glow-panel flex h-full flex-col p-7;
@@ -863,40 +889,40 @@ a {
 
   .platform-tone-label {
     @apply text-xs font-semibold uppercase tracking-[0.22em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .platform-device {
-    @apply mt-6 rounded-[30px] border border-white/60 p-4;
+    @apply mt-6 rounded-2xl border border-white/60 p-4;
     min-height: 180px;
     background:
-      linear-gradient(180deg, rgba(255, 249, 243, 0.95), rgba(255, 244, 234, 0.84)),
-      radial-gradient(circle at top right, rgba(36, 89, 84, 0.08), transparent 26%);
+      linear-gradient(180deg, rgba(240, 248, 255, 0.95), rgba(230, 243, 255, 0.84)),
+      radial-gradient(circle at top right, rgba(24, 144, 255, 0.06), transparent 26%);
   }
 
   .platform-card:nth-child(2) .platform-device {
     background:
-      linear-gradient(180deg, rgba(255, 249, 243, 0.95), rgba(242, 248, 246, 0.88)),
-      radial-gradient(circle at top right, rgba(36, 89, 84, 0.12), transparent 28%);
+      linear-gradient(180deg, rgba(240, 248, 255, 0.95), rgba(230, 247, 255, 0.88)),
+      radial-gradient(circle at top right, rgba(24, 144, 255, 0.1), transparent 28%);
   }
 
   .platform-card:nth-child(3) .platform-device {
     background:
-      linear-gradient(180deg, rgba(255, 249, 243, 0.95), rgba(246, 242, 248, 0.86)),
-      radial-gradient(circle at top right, rgba(201, 110, 66, 0.18), transparent 28%);
+      linear-gradient(180deg, rgba(240, 248, 255, 0.95), rgba(236, 240, 255, 0.86)),
+      radial-gradient(circle at top right, rgba(24, 144, 255, 0.14), transparent 28%);
   }
 
   .platform-device-screen {
-    @apply flex h-full flex-col justify-end rounded-[24px] px-5 py-6;
+    @apply flex h-full flex-col justify-end rounded-xl px-5 py-6;
     min-height: 148px;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.58)),
-      radial-gradient(circle at top right, rgba(241, 207, 178, 0.2), transparent 24%);
+      linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)),
+      radial-gradient(circle at top right, rgba(186, 231, 255, 0.16), transparent 24%);
   }
 
   .platform-device-screen span {
     @apply text-[11px] font-semibold uppercase tracking-[0.24em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .platform-device-screen strong {
@@ -908,11 +934,13 @@ a {
     color: var(--muted);
   }
 
+  /* ---- Story Section (retained for sub-pages) ---- */
+
   .story-panel {
     @apply panel relative px-8 py-10 md:px-14 md:py-16;
     background:
-      linear-gradient(180deg, rgba(255, 252, 248, 0.92), rgba(255, 246, 239, 0.84)),
-      radial-gradient(circle at top center, rgba(241, 207, 178, 0.18), transparent 26%);
+      linear-gradient(180deg, rgba(240, 248, 255, 0.92), rgba(230, 243, 255, 0.84)),
+      radial-gradient(circle at top center, rgba(186, 231, 255, 0.14), transparent 26%);
   }
 
   .story-panel::before {
@@ -921,14 +949,14 @@ a {
     top: 18px;
     font-size: 120px;
     line-height: 1;
-    color: rgba(241, 207, 178, 0.46);
-    content: "“";
+    color: rgba(186, 231, 255, 0.46);
+    content: "\201C";
     pointer-events: none;
   }
 
   .story-divider {
     @apply mx-auto mb-8 mt-2 h-px w-24;
-    background: linear-gradient(90deg, transparent, rgba(157, 81, 52, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(24, 144, 255, 0.24), transparent);
   }
 
   .story-body {
@@ -937,51 +965,67 @@ a {
 
   .story-body p {
     @apply text-lg leading-8 md:text-[1.38rem] md:leading-10;
-    color: rgba(31, 25, 22, 0.88);
+    color: rgba(26, 26, 46, 0.84);
   }
 
+  /* ---- CTA Section ---- */
+
   .cta-panel {
-    background:
-      linear-gradient(180deg, rgba(27, 60, 59, 0.96), rgba(18, 34, 34, 0.94)),
-      radial-gradient(circle at top right, rgba(241, 207, 178, 0.14), transparent 26%);
+    @apply rounded-2xl;
+    background: linear-gradient(135deg, #1890FF, #096DD9);
+    border: none;
   }
 
   .cta-panel .section-title {
-    color: rgba(248, 243, 239, 0.96);
+    color: rgba(255, 255, 255, 0.98);
   }
 
   .cta-panel .body-copy {
-    color: rgba(248, 243, 239, 0.74);
+    color: rgba(255, 255, 255, 0.78);
   }
 
   .cta-eyebrow {
-    background: rgba(241, 207, 178, 0.12);
-    color: rgba(241, 207, 178, 0.94);
+    background: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.96);
   }
 
   .cta-meta {
     @apply text-sm font-semibold uppercase tracking-[0.22em];
-    color: rgba(241, 207, 178, 0.78);
+    color: rgba(255, 255, 255, 0.78);
   }
+
+  .cta-button-white {
+    @apply inline-flex items-center justify-center rounded-full px-8 py-3.5 text-base font-semibold transition duration-200;
+    background: #ffffff;
+    color: #1890FF;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .cta-button-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  /* ---- Feature Block (sub-pages) ---- */
 
   .feature-block {
     @apply panel grid gap-8 p-8 md:grid-cols-[0.95fr_0.85fr] md:items-center md:p-10;
   }
 
   .feature-block-visual {
-    @apply rounded-[30px] border border-white/60 bg-[linear-gradient(180deg,rgba(255,249,243,0.92),rgba(255,244,234,0.82))] p-4;
+    @apply rounded-2xl border border-white/60 bg-[linear-gradient(180deg,rgba(240,248,255,0.92),rgba(230,243,255,0.82))] p-4;
   }
 
   .feature-placeholder {
-    @apply flex min-h-[260px] flex-col justify-end rounded-[26px] px-6 py-7;
+    @apply flex min-h-[260px] flex-col justify-end rounded-xl px-6 py-7;
     background:
-      radial-gradient(circle at top right, rgba(201, 110, 66, 0.2), transparent 24%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 247, 240, 0.96));
+      radial-gradient(circle at top right, rgba(24, 144, 255, 0.14), transparent 24%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(240, 248, 255, 0.96));
   }
 
   .feature-placeholder span {
     @apply text-sm font-semibold uppercase tracking-[0.22em];
-    color: var(--forest);
+    color: var(--accent);
   }
 
   .feature-placeholder strong {
@@ -1024,7 +1068,7 @@ a {
   }
 
   .hero-stage {
-    min-height: 760px;
+    min-height: 560px;
   }
 
   .hero-phone-frame {
@@ -1064,7 +1108,7 @@ a {
   }
 
   .site-header-shell {
-    @apply rounded-[26px] px-4 py-3;
+    @apply rounded-xl px-4 py-2.5;
   }
 
   .site-header-nav {
@@ -1072,7 +1116,7 @@ a {
   }
 
   .hero-stage {
-    min-height: 740px;
+    min-height: 480px;
     padding: 18px;
   }
 
@@ -1114,10 +1158,6 @@ a {
   .hero-stage-caption {
     left: 18px;
     top: 18px;
-  }
-
-  .hero-stage-orbit {
-    inset: 128px 34px 120px 34px;
   }
 
   .scene-card-copy {

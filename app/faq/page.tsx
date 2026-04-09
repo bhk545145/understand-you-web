@@ -12,9 +12,9 @@ import { getFaqItems } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "FAQ | 懂你",
+    absolute: "常见问题 | 懂你",
   },
-  description: "查看懂你的常见问题，快速了解产品定位、平台支持与内容维护方式。",
+  description: "查看懂你的常见问题。",
 };
 
 export default async function FaqPage() {
@@ -25,9 +25,7 @@ export default async function FaqPage() {
       <section className="section-shell">
         <Container className="max-w-4xl">
           <SectionHeading
-            eyebrow="FAQ"
-            title="把最常被问到的问题先回答清楚"
-            description="这里的内容默认也可以通过 Strapi 维护，方便后续持续补充。"
+            title="常见问题"
             align="center"
             level="h1"
           />

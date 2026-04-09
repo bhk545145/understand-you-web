@@ -8,7 +8,7 @@ function CtaAction({ href, label }: { href: string | null; label: string }) {
     return (
       <span
         aria-disabled="true"
-        className="button-primary cursor-not-allowed opacity-60"
+        className="cta-button-white cursor-not-allowed opacity-60"
       >
         {label}
       </span>
@@ -19,7 +19,7 @@ function CtaAction({ href, label }: { href: string | null; label: string }) {
 
   return (
     <Link
-      className="button-primary"
+      className="cta-button-white"
       href={href}
       rel={external ? "noreferrer" : undefined}
       target={external ? "_blank" : undefined}
@@ -39,15 +39,13 @@ export default function CtaSection({
   return (
     <section className="section-shell pt-0">
       <Container>
-        <div className="panel cta-panel grid gap-8 px-8 py-10 md:grid-cols-[1fr_auto] md:items-end md:px-12 md:py-12">
-          <div className="space-y-4">
-            <p className="eyebrow cta-eyebrow">Download</p>
-            <h2 className="section-title text-balance">{homepage.ctaTitle}</h2>
-            <p className="body-copy max-w-2xl">{homepage.ctaDescription}</p>
-            <p className="cta-meta">iOS · Android · macOS</p>
-          </div>
+        <div className="cta-panel px-8 py-12 text-center md:px-16 md:py-16">
+          <p className="eyebrow cta-eyebrow">下载</p>
+          <h2 className="section-title mt-4 text-balance">{homepage.ctaTitle}</h2>
+          <p className="body-copy mx-auto mt-4 max-w-2xl">{homepage.ctaDescription}</p>
+          <p className="cta-meta mt-3">iOS · Android · macOS</p>
 
-          <div className="flex flex-wrap gap-4 md:justify-end">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             {platforms.map((platform) => (
               <CtaAction
                 href={platform.downloadUrl}

@@ -7,7 +7,7 @@ const navLinks = [
   { href: "/features", label: "功能" },
   { href: "/about", label: "关于" },
   { href: "/download", label: "下载" },
-  { href: "/faq", label: "FAQ" },
+  { href: "/faq", label: "常见问题" },
 ];
 
 export default function SiteHeader({ site }: { site: SiteShell }) {

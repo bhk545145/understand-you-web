@@ -50,7 +50,6 @@ export default async function DownloadPage() {
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-5">
             <SectionHeading
-              eyebrow="Download"
               title={page.title}
               description={page.description}
               level="h1"
@@ -64,7 +63,7 @@ export default async function DownloadPage() {
               {latestRelease ? (
                 <div className="mt-6 space-y-3 rounded-[24px] border border-[color:var(--line)] bg-white/55 p-5">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="eyebrow">Latest</span>
+                    <span className="eyebrow">最新版本</span>
                     <strong className="text-xl">{latestRelease.version}</strong>
                     <span className="text-sm text-[color:var(--muted)]">
                       {formatReleaseDate(latestRelease.releaseDate)}
@@ -81,7 +80,7 @@ export default async function DownloadPage() {
               <div className="mt-6 rounded-[24px] border border-[color:var(--line)] bg-[color:var(--surface-strong)] p-5">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div className="space-y-2">
-                    <span className="eyebrow">Shortcut</span>
+                    <span className="eyebrow">快捷入口</span>
                     <h2 className="text-2xl">想把快捷记账直接加到系统里？</h2>
                     <p className="body-copy">
                       我们已经准备好了快捷记账模板导入页。添加后，你就可以通过 Siri、

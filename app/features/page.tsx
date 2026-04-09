@@ -32,7 +32,6 @@ export default async function FeaturesPage() {
       <section className="section-shell">
         <Container>
           <SectionHeading
-            eyebrow="Features"
             title={page.title}
             description={page.description}
             level="h1"

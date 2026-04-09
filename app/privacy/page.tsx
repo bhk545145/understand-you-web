@@ -29,7 +29,6 @@ export default async function PrivacyPage() {
       <section className="section-shell">
         <Container className="max-w-4xl">
           <SectionHeading
-            eyebrow="Privacy"
             title={privacy.title}
             description={privacy.updatedAtText}
             level="h1"

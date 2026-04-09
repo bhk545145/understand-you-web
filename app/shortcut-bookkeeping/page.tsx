@@ -142,7 +142,7 @@ export default function ShortcutBookkeepingPage() {
           <div className="space-y-6">
             <div className="panel p-7 md:p-8">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="eyebrow">Shortcut Template</span>
+                <span className="eyebrow">快捷记账模板</span>
                 <span className="rounded-full border border-[color:var(--line)] bg-white/55 px-3 py-1 text-sm text-[color:var(--muted)]">
                   iCloud Shortcut
                 </span>
@@ -246,7 +246,7 @@ export default function ShortcutBookkeepingPage() {
       <section className="section-shell py-12">
         <Container>
           <SectionHeading
-            eyebrow="How it works"
+            eyebrow="使用步骤"
             title="三步完成系统级快捷记账"
             description="不改你原来的记账习惯，只是把入口提前到系统层。"
           />
@@ -285,7 +285,7 @@ export default function ShortcutBookkeepingPage() {
         <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="panel p-7 md:p-8">
             <SectionHeading
-              eyebrow="Checklist"
+              eyebrow="检查清单"
               title="添加前先确认这三件事"
               description="避免导入后点了没反应，或者只能打开 App 却不能记账。"
               className="mb-0"
@@ -333,7 +333,7 @@ export default function ShortcutBookkeepingPage() {
       <section className="section-shell pt-8">
         <Container>
           <div className="panel glow-panel px-7 py-10 text-center md:px-12">
-            <span className="eyebrow">Shortcut Ready</span>
+            <span className="eyebrow">快捷指令就绪</span>
             <h2 className="section-title mx-auto mt-5 max-w-3xl">
               先把模板加进系统，之后再慢慢把记账做成你的自动化习惯
             </h2>

@@ -33,9 +33,7 @@ export default async function ChangelogPage() {
       <section className="section-shell">
         <Container className="max-w-4xl">
           <SectionHeading
-            eyebrow="Changelog"
             title="更新说明"
-            description="版本信息与更新摘要可以通过 Strapi 统一维护。"
             level="h1"
           />
 
@@ -43,7 +41,7 @@ export default async function ChangelogPage() {
             {releaseNotes.map((note) => (
               <article className="panel p-7" key={`${note.version}-${note.releaseDate}`}>
                 <div className="flex flex-wrap items-center gap-3">
-                  {note.isLatest ? <span className="eyebrow">Latest</span> : null}
+                  {note.isLatest ? <span className="eyebrow">最新</span> : null}
                   <h2 className="text-2xl">{note.version}</h2>
                   <span className="text-sm text-[color:var(--muted)]">
                     {formatReleaseDate(note.releaseDate)}
