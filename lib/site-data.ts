@@ -231,13 +231,23 @@ const downloadFallback: DownloadPageData = {
 
 const releaseNoteFallback: ReleaseNote[] = [
   {
+    version: "1.0.5",
+    platforms: ["iOS", "Android", "macOS"],
+    releaseDate: "2026-04-08",
+    summary:
+      "基础记录打底版——任何输入都能被接住、保存、回看、编辑。",
+    content:
+      "<h3>新增内容</h3><ul><li>新增「基础记录」写入能力，承接暂时不适合直接归类的输入</li><li>聊天新增基础记录写入路径，支持预览确认后提交</li><li>新增基础记录详情页，支持查看与编辑标题、内容、时间、地点</li><li>基础记录接入统一时间线，支持日历查看、顺延和删除</li><li>数据备份导出新增 baseRecords 和 recordTypeDefinitions，bundle schema 升级到 2</li></ul>",
+    isLatest: true,
+  },
+  {
     version: "0.1.0 Beta",
     platforms: ["iOS", "Android", "macOS"],
     releaseDate: "2026-03-28",
     summary: "首个测试版本。",
     content:
       "完成核心记录功能、AI 识别和三端基础适配。",
-    isLatest: true,
+    isLatest: false,
   },
 ];
 
