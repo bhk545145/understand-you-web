@@ -9,7 +9,7 @@ export default function StorySection({ homepage }: { homepage: HomepageData }) {
       <Container className="max-w-5xl">
         <div className="story-panel">
           <SectionHeading
-            eyebrow="Story"
+            eyebrow="故事"
             title={homepage.storyTitle}
             description="这一屏不是解释功能，而是回答品牌气质从哪里来。"
             level="h2"

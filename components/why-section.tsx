@@ -10,7 +10,7 @@ export default function WhySection({ homepage }: { homepage: HomepageData }) {
         <div className="why-panel">
           <div className="space-y-8">
             <SectionHeading
-              eyebrow="Why"
+              eyebrow="为什么"
               title={homepage.whyTitle}
               description="生活本身是连续的，但我们常常被迫用不同工具把它拆开处理。"
               level="h2"

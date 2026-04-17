@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
-// 强制动态渲染
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+// ISR: 每 5 分钟重新验证
+export const revalidate = 300;
 
 import Link from "next/link";
 

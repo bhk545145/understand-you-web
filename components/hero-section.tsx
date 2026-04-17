@@ -2,17 +2,8 @@ import Link from "next/link";
 
 import Container from "@/components/container";
 import { resolveStrapiMediaUrl } from "@/lib/strapi";
+import { iconMap } from "@/lib/icons";
 import type { HomepageData } from "@/types/site";
-
-const featureIcons: Record<string, string> = {
-  spark: "✦",
-  orbit: "◎",
-  shield: "◌",
-  bolt: "⚡",
-  brain: "🧠",
-  chat: "💬",
-  devices: "⌘",
-};
 
 const heroMetrics = [
   { label: "支出", value: "¥ 38", note: "1 笔已记录" },
@@ -57,6 +48,7 @@ function HeroDevicePreview({
           <img
             alt="懂你应用截图"
             className="hero-device-shot-image"
+            loading="lazy"
             src={heroMockupUrl}
           />
         </div>
@@ -125,11 +117,11 @@ export default function HeroSection({ homepage }: { homepage: HomepageData }) {
   const capabilities = homepage.capabilitiesItems?.slice(0, 3) ?? [];
 
   return (
-    <section className="hero-shell section-shell pb-12 pt-10 md:pb-24 md:pt-16">
+    <section aria-labelledby="hero-heading" className="hero-shell section-shell pb-12 pt-10 md:pb-24 md:pt-16">
       <Container className="relative grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="hero-copy-stack">
           <div className="hero-copy-frame">
-            <h1 className="display-title text-balance">{homepage.heroTitle}</h1>
+            <h1 className="display-title text-balance" id="hero-heading">{homepage.heroTitle}</h1>
             <div className="space-y-4">
               <p className="hero-subtitle text-balance">{homepage.heroSubtitle}</p>
               <p className="body-copy max-w-2xl">{homepage.heroDescription}</p>
@@ -150,7 +142,7 @@ export default function HeroSection({ homepage }: { homepage: HomepageData }) {
               {capabilities.map((item) => (
                 <div className="hero-feature-item" key={item.title}>
                   <div className="hero-feature-icon">
-                    {featureIcons[item.iconName] ?? "✦"}
+                    {iconMap[item.iconName] ?? "✦"}
                   </div>
                   <div>
                     <strong>{item.title}</strong>

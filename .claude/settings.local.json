@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next:*)",
+      "Bash(npx impeccable:*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls /Users/hongkunbai/baihk/Code/understand_you_h5/understand-you-web/next.config*)",
+      "Bash(cat /Users/hongkunbai/baihk/Code/understand_you_h5/understand-you-web/.env*)"
+    ]
+  }
+}

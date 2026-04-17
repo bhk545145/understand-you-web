@@ -49,6 +49,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="zh-CN">
       <body>
+        <a className="skip-to-content" href="#main-content">
+          跳到主要内容
+        </a>
         <SiteHeader site={site} />
         {children}
         <SiteFooter site={site} />

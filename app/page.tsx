@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+// ISR: 每 5 分钟重新验证
+export const revalidate = 300;
 
 import CtaSection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";
@@ -28,7 +28,7 @@ export default async function HomePage() {
   ]);
 
   return (
-    <main className="home-shell overflow-hidden">
+    <main className="home-shell overflow-hidden" id="main-content">
       <HeroSection homepage={homepage} />
       <ScenesSection scenes={scenes} />
       <TrustSection />

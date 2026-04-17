@@ -15,7 +15,7 @@ export default function FeatureBlocks({ features }: { features: FeatureDetailIte
           >
             <div className="space-y-4">
               <p className="eyebrow">{feature.subtitle}</p>
-              <h2 className="text-3xl text-balance md:text-4xl">{feature.title}</h2>
+              <h3 className="text-3xl text-balance md:text-4xl">{feature.title}</h3>
               <RichTextContent content={feature.description} />
             </div>
 
@@ -24,6 +24,7 @@ export default function FeatureBlocks({ features }: { features: FeatureDetailIte
                 <img
                   alt={feature.title}
                   className="h-full w-full rounded-[28px] object-cover"
+                  loading="lazy"
                   src={imageUrl}
                 />
               ) : (
