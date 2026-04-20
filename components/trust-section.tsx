@@ -30,7 +30,7 @@ export default function TrustSection() {
               不只是输入更快，入口也更顺手
             </h2>
             <p className="scene-card-subtitle mt-2">
-              记录这件事，应该比打开表单更短。
+              财务记录这件事，应该比打开表单更短。
             </p>
           </div>
 
@@ -58,7 +58,7 @@ export default function TrustSection() {
             <div className="trust-privacy-item">
               <p className="text-sm font-semibold">记录存储</p>
               <p className="mt-1 text-sm leading-6 text-[color:var(--muted)]">
-                支出、待办、随笔默认存储在本机，不需要先上传到服务器。
+                支出、预算、借还款和提醒默认存储在本机，不需要先上传到服务器。
               </p>
             </div>
             <div className="trust-privacy-item">

@@ -7,8 +7,8 @@ import type { HomepageData } from "@/types/site";
 
 const heroMetrics = [
   { label: "支出", value: "¥ 38", note: "1 笔已记录" },
-  { label: "待办", value: "02", note: "1 条有提醒" },
-  { label: "随笔", value: "01", note: "已保存" },
+  { label: "预算", value: "68%", note: "本月剩余可控" },
+  { label: "提醒", value: "02", note: "1 笔账单将到期" },
 ];
 
 function HeroDevicePreview({
@@ -29,8 +29,8 @@ function HeroDevicePreview({
 
       <div className="hero-device-topbar">
         <div>
-          <p className="hero-device-greeting">今天的生活记录</p>
-          <strong>支出 · 待办 · 随笔</strong>
+          <p className="hero-device-greeting">今天的财务工作台</p>
+          <strong>记账 · 预算 · 提醒</strong>
         </div>
         <div className="hero-device-avatar">懂</div>
       </div>
@@ -38,7 +38,7 @@ function HeroDevicePreview({
       <div className="hero-device-composer">
         <div className="hero-device-composer-copy">
           <span className="hero-device-composer-label">输入</span>
-          <p>今天中午吃饭花了 38 元，明天下午提醒我给妈妈打电话。</p>
+          <p>今天中午吃饭花了 38 元，下周提醒我还招行信用卡 2000。</p>
         </div>
         <span className="hero-device-composer-action">发送</span>
       </div>
@@ -65,8 +65,8 @@ function HeroDevicePreview({
       </div>
 
       <div className="hero-device-section-head">
-        <span>今日记录</span>
-        <p>由一句话展开。</p>
+        <span>今日动作</span>
+        <p>由一句话直接展开。</p>
       </div>
 
       <div className="hero-device-timeline">
@@ -84,29 +84,29 @@ function HeroDevicePreview({
           <div className="hero-device-entry-dot" aria-hidden="true" />
           <div className="hero-device-entry-copy">
             <div className="hero-device-entry-head">
-              <span className="hero-device-entry-badge">待办</span>
-              <strong>明天下午给妈妈打电话</strong>
+              <span className="hero-device-entry-badge">提醒</span>
+              <strong>下周还招行信用卡 2000 元</strong>
             </div>
-            <p className="hero-device-entry-meta">已创建提醒</p>
+            <p className="hero-device-entry-meta">已创建还款提醒</p>
           </div>
         </div>
         <div className="hero-device-entry hero-device-entry-note">
           <div className="hero-device-entry-dot" aria-hidden="true" />
           <div className="hero-device-entry-copy">
             <div className="hero-device-entry-head">
-              <span className="hero-device-entry-badge">随笔</span>
-              <strong>今天有点累，但事情推进了</strong>
+              <span className="hero-device-entry-badge">预算</span>
+              <strong>本月餐饮预算已用 68%</strong>
             </div>
-            <p className="hero-device-entry-meta">21:10</p>
+            <p className="hero-device-entry-meta">建议留意晚餐与咖啡支出</p>
           </div>
         </div>
       </div>
 
       <div className="hero-device-nav">
-        <span className="hero-device-nav-item hero-device-nav-item-active">记录</span>
-        <span className="hero-device-nav-item">时间线</span>
+        <span className="hero-device-nav-item hero-device-nav-item-active">首页</span>
+        <span className="hero-device-nav-item">账户</span>
         <span className="hero-device-nav-item">预算</span>
-        <span className="hero-device-nav-item">我的</span>
+        <span className="hero-device-nav-item">借还款</span>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ export default function ScenesSection({ scenes }: { scenes: FeatureScene[] }) {
           <span className="eyebrow">产品机制</span>
           <h2 className="section-title text-balance" id="scenes-heading">你说一句，系统负责整理</h2>
           <p className="body-copy max-w-2xl">
-            不需要先打开某个功能页。说一句话，系统自动判断这是支出、待办还是随笔。
+            不需要先打开复杂表单。说一句话，系统会优先理解这是记账、查账、预算还是提醒。
           </p>
         </div>
 
