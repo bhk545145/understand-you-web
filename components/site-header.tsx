@@ -6,13 +6,14 @@ import type { SiteShell } from "@/types/site";
 const navLinks = [
   { href: "/features", label: "功能" },
   { href: "/about", label: "关于" },
+  { href: "/changelog", label: "更新" },
   { href: "/download", label: "下载" },
-  { href: "/faq", label: "常见问题" },
+  { href: "/faq", label: "问答" },
 ];
 
 export default function SiteHeader({ site }: { site: SiteShell }) {
   return (
-    <header className="sticky top-0 z-40 px-4 pt-4 md:px-6">
+    <header className="site-header sticky top-0 z-40 px-4 pt-4 md:px-6">
       <Container className="px-0 sm:px-0 lg:px-0">
         <div className="site-header-shell">
           <Link className="site-header-brand" href="/">

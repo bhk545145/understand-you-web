@@ -6,6 +6,7 @@ import type { SiteShell } from "@/types/site";
 const primaryLinks = [
   { href: "/features", label: "功能" },
   { href: "/about", label: "关于" },
+  { href: "/changelog", label: "更新历程" },
   { href: "/download", label: "下载" },
   { href: "/privacy", label: "隐私" },
 ];

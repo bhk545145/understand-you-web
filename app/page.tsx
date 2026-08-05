@@ -5,9 +5,15 @@ export const revalidate = 300;
 
 import CtaSection from "@/components/cta-section";
 import HeroSection from "@/components/hero-section";
+import ReleaseJourneySection from "@/components/release-journey-section";
 import ScenesSection from "@/components/scenes-section";
 import TrustSection from "@/components/trust-section";
-import { getFeatureScenes, getHomepageData, getPlatformLinks } from "@/lib/site-data";
+import {
+  getFeatureScenes,
+  getHomepageData,
+  getPlatformLinks,
+  getReleaseNotes,
+} from "@/lib/site-data";
 
 export async function generateMetadata(): Promise<Metadata> {
   const homepage = await getHomepageData();
@@ -21,10 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const [homepage, scenes, platforms] = await Promise.all([
+  const [homepage, scenes, platforms, releases] = await Promise.all([
     getHomepageData(),
     getFeatureScenes(),
     getPlatformLinks(),
+    getReleaseNotes(),
   ]);
 
   return (
@@ -32,6 +39,7 @@ export default async function HomePage() {
       <HeroSection homepage={homepage} />
       <ScenesSection scenes={scenes} />
       <TrustSection />
+      <ReleaseJourneySection releases={releases} />
       <CtaSection homepage={homepage} platforms={platforms} />
     </main>
   );

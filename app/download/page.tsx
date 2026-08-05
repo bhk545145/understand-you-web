@@ -7,21 +7,14 @@ import Link from "next/link";
 
 import Container from "@/components/container";
 import DownloadCards from "@/components/download-cards";
-import RichTextContent from "@/components/rich-text-content";
+import ReleaseStatusBadge from "@/components/release-status-badge";
 import SectionHeading from "@/components/section-heading";
+import { releaseDateLabel } from "@/lib/release-presentation";
 import {
   getDownloadPageData,
   getPlatformLinks,
   getReleaseNotes,
 } from "@/lib/site-data";
-
-function formatReleaseDate(date: string) {
-  return new Intl.DateTimeFormat("zh-CN", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(`${date}T00:00:00`));
-}
 
 export async function generateMetadata(): Promise<Metadata> {
   const page = await getDownloadPageData();
@@ -41,7 +34,9 @@ export default async function DownloadPage() {
     getReleaseNotes(),
   ]);
 
-  const latestRelease = releaseNotes.find((item) => item.isLatest) ?? releaseNotes[0];
+  const latestUpdate = releaseNotes.find((item) => item.isLatest) ?? releaseNotes[0];
+  const versionTitle =
+    latestUpdate?.status === "released" ? page.versionTitle : "版本动态";
 
   return (
     <main>
@@ -56,22 +51,22 @@ export default async function DownloadPage() {
             />
 
             <div className="panel p-7">
-              <h2 className="text-2xl">{page.versionTitle}</h2>
+              <h2 className="text-2xl">{versionTitle}</h2>
               <p className="body-copy mt-4">{page.versionDescription}</p>
 
-              {latestRelease ? (
+              {latestUpdate ? (
                 <div className="mt-6 space-y-3 rounded-[24px] border border-[color:var(--line)] bg-white/55 p-5">
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="eyebrow">最新版本</span>
-                    <strong className="text-xl">{latestRelease.version}</strong>
+                    <span className="eyebrow">最新进展</span>
+                    <ReleaseStatusBadge status={latestUpdate.status} />
+                    <strong className="text-xl">{latestUpdate.version}</strong>
                     <span className="text-sm text-[color:var(--muted)]">
-                      {formatReleaseDate(latestRelease.releaseDate)}
+                      {releaseDateLabel(latestUpdate.releaseDate, latestUpdate.status)}
                     </span>
                   </div>
-                  <p className="body-copy">{latestRelease.summary}</p>
-                  <RichTextContent content={latestRelease.content} />
+                  <p className="body-copy">{latestUpdate.summary}</p>
                   <Link className="button-secondary" href="/changelog">
-                    查看更新说明
+                    查看更新历程
                   </Link>
                 </div>
               ) : null}

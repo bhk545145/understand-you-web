@@ -142,13 +142,22 @@ export type DownloadPageData = {
   seoDescription: string;
 };
 
+export type ReleaseStatus =
+  | "development"
+  | "submitted"
+  | "released"
+  | "archived"
+  | "beta";
+
 export type ReleaseNote = {
   version: string;
   platforms: PlatformName[];
-  releaseDate: string;
+  releaseDate: string | null;
   summary: string;
   content: RichTextValue;
   isLatest: boolean;
+  status: ReleaseStatus;
+  sort: number;
 };
 
 export type FaqItem = {
